@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfrc287phd4w7"]
+
+[ext_resource type="Script" uid="uid://dderir6mrbp8k" path="res://scripts/unit_manager.gd" id="1_3i0j8"]
+[ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="1_dp28g"]
+[ext_resource type="Script" uid="uid://bhera803jrei2" path="res://scripts/get_target.gd" id="3_0dyjn"]
+[ext_resource type="Script" uid="uid://qq553up108qx" path="res://scripts/movement.gd" id="4_5fsgc"]
+[ext_resource type="Script" uid="uid://tk3v3vbtjifb" path="res://scripts/attack.gd" id="5_ruro2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i0j8"]
+size = Vector2(9, 2.75)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ruro2"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ruro2"]
+radius = 41.0122
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_3i0j8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dp28g")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(1, 10.625)
+shape = SubResource("RectangleShape2D_3i0j8")
+
+[node name="GetTarget" type="Node2D" parent="."]
+script = ExtResource("3_0dyjn")
+
+[node name="Movement" type="Node2D" parent="."]
+script = ExtResource("4_5fsgc")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Collider" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 5)
+shape = SubResource("CapsuleShape2D_ruro2")
+
+[node name="Attack" type="Area2D" parent="."]
+collision_mask = 2
+monitoring = false
+script = ExtResource("5_ruro2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+shape = SubResource("CircleShape2D_ruro2")

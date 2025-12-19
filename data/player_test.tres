@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://dx3tvhdxotd3r"]
+
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="1_mlv3v"]
+
+[resource]
+script = ExtResource("1_mlv3v")
+faction = 0
+speed = 100.0
+attack_range = 30.0
+attack_cooldown = 1.0
+damage = 10
+target_groups = Array[String](["enemy"])
+metadata/_custom_type_script = "uid://bohci6skr4x5g"
