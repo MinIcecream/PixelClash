@@ -9,4 +9,5 @@ enum Faction { PLAYER, ENEMY }
 @export var attack_cooldown: float = 1.0
 @export var damage: int = 10
 @export var health: int = 20
+@export var size: Vector2 = Vector2(1, 1)
 @export var target_groups: Array[String]

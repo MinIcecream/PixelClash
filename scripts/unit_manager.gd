@@ -10,7 +10,7 @@ enum Faction { PLAYER, ENEMY, NEUTRAL }
 
 var attacking = false
 var can_attack = true
-
+var origin = Vector2.ZERO
 var health
 
 func _ready():
