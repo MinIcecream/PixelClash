@@ -18,8 +18,9 @@ func _on_area_entered(area: Area2D) -> void:
 	hit_units[unit] = true
 
 func attack() -> void:
+	await get_tree().create_timer(0.5).timeout
 	enable_hitbox()
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(0.2).timeout
 	disable_hitbox()
 	emit_signal("finish_attack")
 

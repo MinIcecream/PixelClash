@@ -4,8 +4,14 @@ extends Node2D
 
 func _draw():
 	# Vertical lines
-	for x in range(get_parent().top_left.x, get_parent().top_left.x + get_parent().width + 1, get_parent().grid_size):
-		draw_line(Vector2(x, get_parent().top_left.y), Vector2(x, get_parent().top_left.y + get_parent().height), color, 1)
+	for i in range(get_parent().width + 1):
+		var x = get_parent().top_left.x + (get_parent().cell_size * i)
+		var top = get_parent().top_left.y
+		var bottom = get_parent().top_left.y + (get_parent().height * get_parent().cell_size)
+		draw_line(Vector2(x, top), Vector2(x, bottom), color, 1)
 	# Horizontal lines
-	for y in range(get_parent().top_left.y, get_parent().top_left.y + get_parent().height + 1, get_parent().grid_size):
-		draw_line(Vector2(get_parent().top_left.x, y), Vector2(get_parent().top_left.x + get_parent().width, y), color, 1)
+	for i in range(get_parent().height + 1):
+		var y = get_parent().top_left.y + (get_parent().cell_size * i)
+		var left = get_parent().top_left.x
+		var right = get_parent().top_left.x + (get_parent().width * get_parent().cell_size)
+		draw_line(Vector2(left, y), Vector2(right, y), color, 1)

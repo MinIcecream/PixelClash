@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx2ncblkpq1sr"]
+[gd_scene load_steps=4 format=3 uid="uid://dx2ncblkpq1sr"]
 
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_7p1mj"]
 [ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/enemy_test.tres" id="2_md0e3"]
+[ext_resource type="Texture2D" uid="uid://ehxcv0ya147g" path="res://assets/tile_0008.png" id="3_4ra3w"]
 
 [node name="CharacterBody2D" instance=ExtResource("1_7p1mj")]
 data = ExtResource("2_md0e3")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_4ra3w")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(1, 9)

@@ -6,15 +6,15 @@
 [ext_resource type="Script" uid="uid://qq553up108qx" path="res://scripts/movement.gd" id="4_5fsgc"]
 [ext_resource type="Script" uid="uid://tk3v3vbtjifb" path="res://scripts/attack.gd" id="5_ruro2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i0j8"]
-size = Vector2(9, 2.75)
+[sub_resource type="CircleShape2D" id="CircleShape2D_tb304"]
+radius = 8.62261
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ruro2"]
 radius = 5.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ruro2"]
-radius = 41.0122
+radius = 11.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_3i0j8")
@@ -23,8 +23,10 @@ script = ExtResource("1_3i0j8")
 texture = ExtResource("1_dp28g")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(1, 10.625)
-shape = SubResource("RectangleShape2D_3i0j8")
+position = Vector2(1, 9)
+rotation = 1.57638
+scale = Vector2(0.463897, -0.447547)
+shape = SubResource("CircleShape2D_tb304")
 
 [node name="GetTarget" type="Node2D" parent="."]
 script = ExtResource("3_0dyjn")
@@ -46,4 +48,5 @@ monitoring = false
 script = ExtResource("5_ruro2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(1, 4)
 shape = SubResource("CircleShape2D_ruro2")

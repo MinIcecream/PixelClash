@@ -6,8 +6,10 @@
 script = ExtResource("1_mlv3v")
 faction = 0
 speed = 100.0
-attack_range = 30.0
+attack_range = 10.0
 attack_cooldown = 1.0
 damage = 10
+health = 25
+size = Vector2(1, 1)
 target_groups = Array[String](["enemy"])
 metadata/_custom_type_script = "uid://bohci6skr4x5g"
