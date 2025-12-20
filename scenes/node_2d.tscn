@@ -438,11 +438,4 @@ position = Vector2(338, -102)
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("7_fws66")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="Control" parent="CanvasLayer" instance=ExtResource("8_hh0fu")]
-process_mode = 3
-custom_minimum_size = Vector2(100, 0)
-offset_left = -50.0
-offset_right = -50.0
+[node name="UI" parent="." instance=ExtResource("8_hh0fu")]

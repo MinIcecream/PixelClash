@@ -2,7 +2,8 @@ extends Node2D
 
 signal game_over(status: int)
 var game_ended = false
-@onready var UI = $"../CanvasLayer/Control"
+@onready var UI = $"../UI"
+var game_started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_start_game() -> void:
+	game_started = true
 	get_tree().paused = false
 
 func _on_restart_game() -> void:
@@ -24,15 +26,15 @@ func _process(delta: float) -> void:
 	var enemy_units = get_tree().get_nodes_in_group("enemy").size()
 	
 	if player_units > 0 and enemy_units == 0:
-		print("won")
-		emit_signal("game_over", 1)
-		game_ended = true
+		end_game(1)
 	if player_units == 0 and enemy_units > 0:
-		print("lost")
-		emit_signal("game_over", -1)
-		game_ended = true
+		end_game(-1)
 	if player_units == 0 and enemy_units == 0:
-		print("draw")
-		emit_signal("game_over", 0)
-		game_ended = true
+		end_game(0)
+
+func end_game(status: int) -> void:
+	emit_signal("game_over", status)
+	get_tree().paused = true
+	game_ended = true
+	
 	

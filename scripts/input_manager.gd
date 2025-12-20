@@ -4,7 +4,11 @@ var unit: PackedScene = preload("res://scenes/knight.tscn")
 signal place_unit(position: Vector2, unit_scene: PackedScene)
 var start = null
 
+@onready var game_manager = $"../GameManager"
+
 func _unhandled_input(event):
+	if game_manager.game_started:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			start = get_global_mouse_position()
