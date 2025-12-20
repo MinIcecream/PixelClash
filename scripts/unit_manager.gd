@@ -13,6 +13,14 @@ var can_attack = true
 var origin = Vector2.ZERO
 var health
 
+var group_name:
+	get:
+		match data.faction:
+			Faction.PLAYER:
+				return "player"
+			Faction.ENEMY:
+				return "enemy"
+
 func _ready():
 	health = data.health
 	attack.connect("finish_attack", Callable(self, "_on_finish_attack"))

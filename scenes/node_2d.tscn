@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dvqqm57eu4e21"]
+[gd_scene load_steps=11 format=4 uid="uid://dvqqm57eu4e21"]
 
 [ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_6e84v"]
 [ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_04qyp"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bwxvt4pstmbed" path="res://scripts/grid.gd" id="4_04qyp"]
 [ext_resource type="Script" uid="uid://dxwjyobqc2p5r" path="res://scripts/grid_drawer.gd" id="4_4vge2"]
 [ext_resource type="PackedScene" uid="uid://dx2ncblkpq1sr" path="res://scenes/enemy.tscn" id="6_fws66"]
+[ext_resource type="Script" uid="uid://sutuiixeqm62" path="res://scripts/game_manager.gd" id="7_fws66"]
+[ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_hh0fu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dvvg"]
 texture = ExtResource("1_6e84v")
@@ -256,11 +258,13 @@ tile_map_data = PackedByteArray("AABIAA4AAgAFAAEAAABIAA8AAgAFAAEAAABIABAAAgAFAAI
 tile_set = SubResource("TileSet_rnjyy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(2, 2)
 script = ExtResource("2_04qyp")
 limits_rect = Rect2(-20, -20, 40, 40)
 
 [node name="InputManager" type="Node2D" parent="."]
+process_mode = 3
 script = ExtResource("3_4vge2")
 
 [node name="Grid" type="Node2D" parent="."]
@@ -430,3 +434,15 @@ position = Vector2(316, -102)
 
 [node name="CharacterBody2D54" parent="Grid" instance=ExtResource("6_fws66")]
 position = Vector2(338, -102)
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("7_fws66")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("8_hh0fu")]
+process_mode = 3
+custom_minimum_size = Vector2(100, 0)
+offset_left = -50.0
+offset_right = -50.0

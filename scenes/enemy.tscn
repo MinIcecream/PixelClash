@@ -9,6 +9,3 @@ data = ExtResource("2_md0e3")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_4ra3w")
-
-[node name="Collider" parent="." index="1"]
-position = Vector2(1, 9)

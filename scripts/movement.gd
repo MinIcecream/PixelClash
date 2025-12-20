@@ -1,10 +1,30 @@
 extends Node2D
 
+func separation_force(radius: float) -> Vector2:
+	var force := Vector2.ZERO
+	var allies = get_tree().get_nodes_in_group(get_parent().group_name)
+
+	for ally in allies:
+		if ally == self:
+			continue
+
+		var offset = global_position - ally.global_position
+		var d = offset.length()
+
+		if d == 0 or d > radius:
+			continue
+
+		force += offset.normalized() * (1.0 / d)
+
+	return force
+
 func move_to_target(target: Node) -> void:
 	if target == null:
 		return
 
-	var dir = (target.global_position - global_position).normalized()
-	get_parent().velocity = dir * 100
+	var sep = separation_force(24)
+	var to_target = target.global_position - global_position
+	var dir = (to_target + sep * 100).normalized()
+	get_parent().velocity = dir * get_parent().data.speed
 	get_parent().move_and_slide()
 	

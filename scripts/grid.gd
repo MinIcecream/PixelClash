@@ -2,7 +2,7 @@ extends Node2D
 
 signal place_unit(position: Vector2, unit: PackedScene)
 
-@export var cell_size: int = 24
+@export var cell_size: int = 16
 @export var width: int = 20
 @export var height: int = 20
 @export var top_left = Vector2(-240, -240)
