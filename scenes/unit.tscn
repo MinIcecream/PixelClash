@@ -17,6 +17,8 @@ height = 14.0
 radius = 11.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 5
+y_sort_enabled = true
 script = ExtResource("1_3i0j8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,17 +1,21 @@
 extends Node2D
 
 signal game_over(status: int)
+signal update_gold(amount: int)
+
 var game_ended = false
 @onready var UI = $"../UI"
+@onready var grid = $"../Grid"
 var game_started = false
+var gold = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = true
 	UI.start_game.connect(Callable(self, "_on_start_game"))
 	UI.restart_game.connect(Callable(self, "_on_restart_game"))
+	grid.place_unit.connect(Callable(self, "_on_place_unit"))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_start_game() -> void:
 	game_started = true
 	get_tree().paused = false
@@ -19,7 +23,11 @@ func _on_start_game() -> void:
 func _on_restart_game() -> void:
 	get_tree().reload_current_scene()
 
-func _process(delta: float) -> void:
+func _on_place_unit(_pos, data: UnitData) -> void:
+	gold -= data.price
+	emit_signal("update_gold", gold)
+
+func _process(_delta: float) -> void:
 	if game_ended:
 		return
 	var player_units = get_tree().get_nodes_in_group("player").size()

@@ -58,4 +58,7 @@ func _on_finish_attack():
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
+		var death_particles = data.death_particles.instantiate()
+		death_particles.global_position = global_position
+		get_tree().current_scene.add_child(death_particles)
 		queue_free()

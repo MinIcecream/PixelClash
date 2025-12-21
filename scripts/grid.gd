@@ -24,7 +24,7 @@ func world_to_cell(pos: Vector2) -> Vector2i:
 func cell_to_world(cell: Vector2i) -> Vector2:
 	return top_left + (Vector2(cell) + Vector2(0.5, 0.5)) * cell_size
 
-func _on_place_unit(start: Vector2, stop: Vector2, unit: PackedScene) -> void:
+func _on_place_unit(start: Vector2, stop: Vector2, data: UnitData) -> void:
 	var cell1 = world_to_cell(start)
 	var cell2 = world_to_cell(stop)
 
@@ -44,8 +44,8 @@ func _on_place_unit(start: Vector2, stop: Vector2, unit: PackedScene) -> void:
 				print("Cell already occupied!")
 				continue
 
-			place_unit.emit(cell_center, unit)
-			var instance = unit.instantiate()
+			place_unit.emit(cell_center, data)
+			var instance = UnitRegistry.units[data.name].scene.instantiate()
 			instance.global_position = cell_center
 			add_child(instance)
 			cells[cell_center] = instance
