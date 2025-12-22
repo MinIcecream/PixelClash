@@ -1,10 +1,14 @@
 extends Node2D
 
 @export var color: Color = Color(0.7, 0.7, 0.7, 0.5)
+const valid_selection_color: Color = Color(0.2, 0.8, 0.2, 0.5)
+const invalid_selection_color: Color = Color(0.9, 0.3, 0.3, 0.5)
+var selection_color = valid_selection_color
 var selection = null
 @onready var input_manager = $"../../InputManager"
 
 func _ready() -> void:
+	input_manager.preview_gold.connect(Callable(self, "_on_preview_gold"))
 	input_manager.selection.connect(Callable(self, "_on_select"))
 
 func _draw():
@@ -24,7 +28,6 @@ func _draw():
 		draw_selection_box(selection[0], selection[1])
 	
 func draw_selection_box(first_coord, second_coord):
-	print("hi")
 	var cell1 = get_parent().world_to_cell(first_coord)
 	var cell2 = get_parent().world_to_cell(second_coord)
 	
@@ -41,11 +44,22 @@ func draw_selection_box(first_coord, second_coord):
 	var left_world_pos = top_left_cell_bounds.position.x
 	var right_world_pos = bottom_right_cell_bounds.position.x + bottom_right_cell_bounds.size.x
 
-	draw_line(Vector2(left_world_pos, top_world_pos), Vector2(right_world_pos, top_world_pos), color, 3)
-	draw_line(Vector2(right_world_pos, top_world_pos), Vector2(right_world_pos, bottom_world_pos), color, 3)
-	draw_line(Vector2(right_world_pos, bottom_world_pos), Vector2(left_world_pos, bottom_world_pos), color, 3)
-	draw_line(Vector2(left_world_pos, bottom_world_pos), Vector2(left_world_pos, top_world_pos), color, 3)
+	draw_line(Vector2(left_world_pos, top_world_pos), Vector2(right_world_pos, top_world_pos), selection_color, 3)
+	draw_line(Vector2(right_world_pos, top_world_pos), Vector2(right_world_pos, bottom_world_pos), selection_color, 3)
+	draw_line(Vector2(right_world_pos, bottom_world_pos), Vector2(left_world_pos, bottom_world_pos), selection_color, 3)
+	draw_line(Vector2(left_world_pos, bottom_world_pos), Vector2(left_world_pos, top_world_pos), selection_color, 3)
 
-func _on_select(start: Vector2, stop: Vector2):
-	selection = [start, stop]
+func _on_preview_gold(gold: int):
+	if gold < 0:
+		selection_color = invalid_selection_color
+	else:
+		selection_color = valid_selection_color
+
+func _on_select(coords: PackedVector2Array):
+	if coords.size() == 0:
+		selection = null
+		queue_redraw()
+		return
+
+	selection = coords
 	queue_redraw()

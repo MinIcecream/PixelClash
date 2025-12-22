@@ -7,7 +7,7 @@ var game_ended = false
 @onready var UI = $"../UI"
 @onready var grid = $"../Grid"
 var game_started = false
-var gold = 50
+var gold = 60
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

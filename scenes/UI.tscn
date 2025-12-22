@@ -155,3 +155,12 @@ stretch_mode = 0
 script = ExtResource("3_5en4g")
 unit = ExtResource("5_xpksx")
 icon = ExtResource("2_ro3t7")
+
+[node name="PreviewGold" type="Label" parent="Control"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "12 gold"
