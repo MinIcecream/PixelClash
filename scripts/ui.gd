@@ -39,7 +39,6 @@ func _on_restart_game_pressed() -> void:
 	emit_signal("restart_game")
 	
 func on_select_unit(selected_button: TextureButton) -> void:
-	print("selected")
 	for button in get_tree().get_nodes_in_group("unit_button"):
 		if button != selected_button:
 			button.lighten()

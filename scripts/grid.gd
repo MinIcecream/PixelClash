@@ -3,8 +3,8 @@ extends Node2D
 signal place_unit(position: Vector2, unit: PackedScene)
 
 @export var cell_size: int = 16
-@export var width: int = 20
-@export var height: int = 20
+@export var width: int = 50
+@export var height: int = 25
 @export var top_left = Vector2(-240, -240)
 
 @onready var input_manager = $"../InputManager"
@@ -56,3 +56,7 @@ func out_of_bounds(cell: Vector2i) -> bool:
 	if cell.y < 0 or cell.y > height - 1:
 		return true
 	return false
+
+func get_cell_bounds(cell: Vector2i) -> Rect2i:
+	var world_pos = top_left + Vector2(cell) * cell_size
+	return Rect2(world_pos, Vector2i(cell_size, cell_size))
