@@ -8,8 +8,6 @@ enum Faction { PLAYER, ENEMY, NEUTRAL }
 
 @export var data: Resource
 
-var attacking = false
-var can_attack = true
 var origin = Vector2.ZERO
 var health
 
@@ -23,7 +21,6 @@ var group_name:
 
 func _ready():
 	health = data.health
-	attack.connect("finish_attack", Callable(self, "_on_finish_attack"))
 
 	match data.faction:
 		Faction.PLAYER:
@@ -33,9 +30,6 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	if attacking:
-		return
-
 	var target_groups = data.target_groups
 	var target = get_target.get_target(target_groups)
 	
@@ -43,17 +37,9 @@ func _process(_delta: float) -> void:
 		return
 
 	if self.global_position.distance_to(target.global_position) < data.attack_range:
-		if can_attack and not attacking:
-			attack.attack();
-			can_attack = false
-			attacking = true
+		attack.attack(target)
 	else:
 		movement.move_to_target(target)
-
-func _on_finish_attack():	
-	attacking = false
-	await get_tree().create_timer(data.attack_cooldown).timeout
-	can_attack = true
 
 func take_damage(amount: int) -> void:
 	health -= amount

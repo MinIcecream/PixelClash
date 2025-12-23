@@ -1,32 +1,18 @@
-extends Area2D
+class_name Attack
 
-signal finish_attack
+extends Node2D
 
-@onready var collider = "$Collider"
+var _can_attack = true
 
-var hit_units := {}
-
-func _ready() -> void:
-	self.area_entered.connect(Callable(self, "_on_area_entered"))
-
-func _on_area_entered(area: Area2D) -> void:
-	var unit = area.get_parent()
-	if unit in hit_units or unit.data.faction == self.get_parent().data.faction:
+func attack(target: Node2D) -> void:
+	if not _can_attack:
 		return
+	_can_attack = false
+	_do_attack(target)
 
-	unit.take_damage(self.get_parent().data.damage)
-	hit_units[unit] = true
+func _do_attack(_target: Node2D) -> void:
+	pass
 
-func attack() -> void:
-	await get_tree().create_timer(0.5).timeout
-	enable_hitbox()
-	await get_tree().create_timer(0.2).timeout
-	disable_hitbox()
-	emit_signal("finish_attack")
-
-func enable_hitbox():
-	monitoring = true
-	hit_units = {}
-
-func disable_hitbox():
-	monitoring = false
+func finish_attack():
+	await get_tree().create_timer(get_parent().data.attack_cooldown).timeout
+	_can_attack = true

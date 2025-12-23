@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cytx7204ob374" path="res://scripts/unit_selector.gd" id="3_5en4g"]
 [ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/enemy_test.tres" id="4_75u2n"]
 [ext_resource type="Texture2D" uid="uid://ehxcv0ya147g" path="res://assets/tile_0008.png" id="5_3wlde"]
-[ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/player_test.tres" id="5_xpksx"]
+[ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/swordsman.tres" id="5_xpksx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
 bg_color = Color(1, 1, 1, 1)

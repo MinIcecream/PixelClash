@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://dx3tvhdxotd3r"]
+
+[ext_resource type="PackedScene" uid="uid://prykkcv3osf7" path="res://scenes/death.tscn" id="1_64eq1"]
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="2_wk5y1"]
+
+[resource]
+script = ExtResource("2_wk5y1")
+faction = 0
+name = "swordsman"
+speed = 50.0
+attack_range = 10.0
+attack_cooldown = 0.8
+damage = 10
+health = 25
+price = 2
+death_particles = ExtResource("1_64eq1")
+size = Vector2(1, 1)
+target_groups = Array[String](["enemy"])
+metadata/_custom_type_script = "uid://bohci6skr4x5g"

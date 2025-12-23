@@ -1,9 +1,9 @@
 extends Node
 
 var units := {
-	"player": {
-		"scene": preload("res://scenes/knight.tscn"),
-		"data": preload("res://data/player_test.tres")
+	"swordsman": {
+		"scene": preload("res://scenes/swordsman.tscn"),
+		"data": preload("res://data/swordsman.tres")
 	},
 	"enemy": {
 		"scene": preload("res://scenes/enemy.tscn"),
