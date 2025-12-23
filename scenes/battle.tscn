@@ -1,16 +1,16 @@
 [gd_scene load_steps=11 format=4 uid="uid://dvqqm57eu4e21"]
 
-[ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_6e84v"]
-[ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_04qyp"]
-[ext_resource type="Script" uid="uid://bsdhm3br46air" path="res://scripts/input_manager.gd" id="3_4vge2"]
-[ext_resource type="Script" uid="uid://bwxvt4pstmbed" path="res://scripts/grid.gd" id="4_04qyp"]
-[ext_resource type="Script" uid="uid://dxwjyobqc2p5r" path="res://scripts/grid_drawer.gd" id="4_4vge2"]
-[ext_resource type="PackedScene" uid="uid://dx2ncblkpq1sr" path="res://scenes/enemy.tscn" id="6_fws66"]
-[ext_resource type="Script" uid="uid://sutuiixeqm62" path="res://scripts/game_manager.gd" id="7_fws66"]
-[ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_hh0fu"]
+[ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_f4pi3"]
+[ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_yahae"]
+[ext_resource type="Script" uid="uid://bsdhm3br46air" path="res://scripts/input_manager.gd" id="3_v7i3o"]
+[ext_resource type="Script" uid="uid://bwxvt4pstmbed" path="res://scripts/grid.gd" id="4_66ngm"]
+[ext_resource type="Script" uid="uid://dxwjyobqc2p5r" path="res://scripts/grid_drawer.gd" id="5_03edq"]
+[ext_resource type="PackedScene" uid="uid://dx2ncblkpq1sr" path="res://scenes/enemy.tscn" id="6_22uqi"]
+[ext_resource type="Script" uid="uid://sutuiixeqm62" path="res://scripts/game_manager.gd" id="7_6ni85"]
+[ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_vceff"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dvvg"]
-texture = ExtResource("1_6e84v")
+texture = ExtResource("1_f4pi3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -260,290 +260,290 @@ tile_set = SubResource("TileSet_rnjyy")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
 zoom = Vector2(2, 2)
-script = ExtResource("2_04qyp")
+script = ExtResource("2_yahae")
 limits_rect = Rect2(-20, -20, 40, 40)
 
 [node name="InputManager" type="Node2D" parent="."]
 process_mode = 3
-script = ExtResource("3_4vge2")
+script = ExtResource("3_v7i3o")
 
 [node name="Grid" type="Node2D" parent="."]
-script = ExtResource("4_04qyp")
+script = ExtResource("4_66ngm")
 
 [node name="Drawer" type="Node2D" parent="Grid"]
-script = ExtResource("4_4vge2")
+script = ExtResource("5_03edq")
 
-[node name="CharacterBody2D" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-223, -81)
 
-[node name="CharacterBody2D2" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D2" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-202, -81)
 
-[node name="CharacterBody2D3" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D3" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-180, -81)
 
-[node name="CharacterBody2D4" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D4" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-156, -81)
 
-[node name="CharacterBody2D5" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D5" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-135, -81)
 
-[node name="CharacterBody2D6" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D6" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-113, -81)
 
-[node name="CharacterBody2D7" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D7" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-91, -81)
 
-[node name="CharacterBody2D8" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D8" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-70, -81)
 
-[node name="CharacterBody2D9" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D9" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-48, -81)
 
-[node name="CharacterBody2D10" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D10" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-30, -81)
 
-[node name="CharacterBody2D11" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D11" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-9, -81)
 
-[node name="CharacterBody2D12" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D12" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(13, -81)
 
-[node name="CharacterBody2D13" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D13" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(37, -81)
 
-[node name="CharacterBody2D14" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D14" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(58, -81)
 
-[node name="CharacterBody2D15" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D15" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(80, -81)
 
-[node name="CharacterBody2D16" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D16" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(102, -81)
 
-[node name="CharacterBody2D17" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D17" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(123, -81)
 
-[node name="CharacterBody2D18" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D18" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(145, -81)
 
-[node name="CharacterBody2D19" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D19" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(163, -81)
 
-[node name="CharacterBody2D20" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D20" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(184, -81)
 
-[node name="CharacterBody2D21" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D21" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(206, -81)
 
-[node name="CharacterBody2D22" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D22" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(230, -81)
 
-[node name="CharacterBody2D23" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D23" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(251, -81)
 
-[node name="CharacterBody2D24" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D24" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(273, -81)
 
-[node name="CharacterBody2D25" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D25" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(295, -81)
 
-[node name="CharacterBody2D26" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D26" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(316, -81)
 
-[node name="CharacterBody2D27" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D27" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(338, -81)
 
-[node name="CharacterBody2D28" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D28" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-223, -102)
 
-[node name="CharacterBody2D29" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D29" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-202, -102)
 
-[node name="CharacterBody2D30" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D30" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-180, -102)
 
-[node name="CharacterBody2D31" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D31" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-156, -102)
 
-[node name="CharacterBody2D32" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D32" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-135, -102)
 
-[node name="CharacterBody2D33" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D33" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-113, -102)
 
-[node name="CharacterBody2D34" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D34" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-91, -102)
 
-[node name="CharacterBody2D35" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D35" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-70, -102)
 
-[node name="CharacterBody2D36" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D36" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-48, -102)
 
-[node name="CharacterBody2D37" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D37" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-30, -102)
 
-[node name="CharacterBody2D38" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D38" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(-9, -102)
 
-[node name="CharacterBody2D39" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D39" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(13, -102)
 
-[node name="CharacterBody2D40" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D40" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(37, -102)
 
-[node name="CharacterBody2D41" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D41" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(58, -102)
 
-[node name="CharacterBody2D42" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D42" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(80, -102)
 
-[node name="CharacterBody2D43" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D43" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(102, -102)
 
-[node name="CharacterBody2D44" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D44" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(123, -102)
 
-[node name="CharacterBody2D45" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D45" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(145, -102)
 
-[node name="CharacterBody2D46" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D46" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(163, -102)
 
-[node name="CharacterBody2D47" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D47" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(184, -102)
 
-[node name="CharacterBody2D48" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D48" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(206, -102)
 
-[node name="CharacterBody2D49" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D49" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(230, -102)
 
-[node name="CharacterBody2D50" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D50" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(251, -102)
 
-[node name="CharacterBody2D51" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D51" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(273, -102)
 
-[node name="CharacterBody2D52" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D52" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(295, -102)
 
-[node name="CharacterBody2D53" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D53" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(316, -102)
 
-[node name="CharacterBody2D54" parent="Grid" instance=ExtResource("6_fws66")]
+[node name="CharacterBody2D54" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
 y_sort_enabled = false
 position = Vector2(338, -102)
 
 [node name="GameManager" type="Node2D" parent="."]
-script = ExtResource("7_fws66")
+script = ExtResource("7_6ni85")
 
-[node name="UI" parent="." instance=ExtResource("8_hh0fu")]
+[node name="UI" parent="." instance=ExtResource("8_vceff")]

@@ -3,13 +3,15 @@ extends Node2D
 signal place_unit(position: Vector2, unit: PackedScene)
 
 @export var cell_size: int = 16
-@export var width: int = 50
-@export var height: int = 25
-@export var top_left = Vector2(-240, -240)
+@export var width: int = 30
+@export var height: int = 15
 
 @onready var input_manager = $"../InputManager"
 @onready var game_manager = $"../GameManager"
 
+var top_left:
+	get:
+		return Vector2(-width * cell_size / 2.0, -height * cell_size / 2.0)
 var cells = {} #Vector2: unit
 
 func _ready() -> void:

@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Pixel Clash"
-run/main_scene="res://scenes/node_2d.tscn"
+run/main_scene="uid://cl4ej6shrfonc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 UnitRegistry="*res://scripts/unit_registry.gd"
-GridHelpers="*res://scripts/grid_helpers.gd"
+SceneChanger="*res://scripts/scene_changer.gd"
 
 [display]
 
