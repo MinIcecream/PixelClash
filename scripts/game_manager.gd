@@ -1,13 +1,11 @@
 extends Node2D
 
 signal game_over(status: int)
-signal update_gold(amount: int)
 
 var game_ended = false
 @onready var UI = $"../UI"
 @onready var grid = $"../Grid"
 var game_started = false
-var gold = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,10 +20,6 @@ func _on_start_game() -> void:
 
 func _on_restart_game() -> void:
 	get_tree().reload_current_scene()
-
-func _on_place_unit(_pos, data: UnitData) -> void:
-	gold -= data.price
-	emit_signal("update_gold", gold)
 
 func _process(_delta: float) -> void:
 	if game_ended:

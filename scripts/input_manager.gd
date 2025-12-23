@@ -9,6 +9,7 @@ var start = null
 var selected_unit: UnitData = null
 
 @onready var game_manager = $"../GameManager"
+@onready var gold_manager = $"../GoldManager"
 @onready var UI = $"../UI"
 @onready var grid = $"../Grid"
 
@@ -26,7 +27,7 @@ func _unhandled_input(event):
 			return
 		var cells = grid.get_unoccupied_cells_in_rect(start, stop)
 		if selected_unit != null:
-			var cost = game_manager.gold - (cells.size() * selected_unit.price)
+			var cost = gold_manager.gold - (cells.size() * selected_unit.price)
 			emit_signal("preview_gold", cost)
 		emit_signal("selection", [start, stop])
 

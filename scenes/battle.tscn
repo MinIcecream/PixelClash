@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dvqqm57eu4e21"]
+[gd_scene load_steps=12 format=4 uid="uid://dvqqm57eu4e21"]
 
 [ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_f4pi3"]
 [ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_yahae"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dx2ncblkpq1sr" path="res://scenes/enemy.tscn" id="6_22uqi"]
 [ext_resource type="Script" uid="uid://sutuiixeqm62" path="res://scripts/game_manager.gd" id="7_6ni85"]
 [ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_vceff"]
+[ext_resource type="Script" uid="uid://7oymaqo1x24t" path="res://scripts/gold_manager.gd" id="9_yahae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dvvg"]
 texture = ExtResource("1_f4pi3")
@@ -547,3 +548,7 @@ position = Vector2(338, -102)
 script = ExtResource("7_6ni85")
 
 [node name="UI" parent="." instance=ExtResource("8_vceff")]
+
+[node name="GoldManager" type="Node2D" parent="."]
+script = ExtResource("9_yahae")
+starting_gold = 64

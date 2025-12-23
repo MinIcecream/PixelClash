@@ -5,6 +5,7 @@ signal restart_game
 signal select_unit
 
 @onready var game_manager = $"../GameManager"
+@onready var gold_manager = $"../GoldManager"
 @onready var input_manager = $"../InputManager"
 @onready var play_button = $"Control/Play/HBoxContainer/Button"
 @onready var gold_label = $"Control/Play/HBoxContainer/MarginContainer/Gold"
@@ -18,10 +19,10 @@ func _ready() -> void:
 	input_manager.drag_release.connect(Callable(self, "_on_drag_release"))
 	input_manager.preview_gold.connect(Callable(self, "_on_preview_gold"))
 	game_manager.game_over.connect(Callable(self, "_on_game_over"))
-	game_manager.update_gold.connect(Callable(self, "_on_update_gold"))
+	gold_manager.gold_changed.connect(Callable(self, "_on_gold_changed"))
 	play_button.pressed.connect(Callable(self, "_on_start_game_pressed"))
 	restart_button.pressed.connect(Callable(self, "_on_restart_game_pressed"))
-	gold_label.text = str(game_manager.gold) + " Gold"
+	gold_label.text = str(gold_manager.gold) + " Gold"
 
 func _on_game_over(status: int) -> void:
 	game_over_container.visible = true
@@ -33,7 +34,7 @@ func _on_game_over(status: int) -> void:
 		1:
 			game_over_label.text = "You Won!"
 
-func _on_update_gold(gold: int):
+func _on_gold_changed(gold: int):
 	gold_label.text = str(gold) + " Gold"
 
 func _on_start_game_pressed():

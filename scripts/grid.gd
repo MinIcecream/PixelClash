@@ -7,7 +7,7 @@ signal place_unit(position: Vector2, unit: PackedScene)
 @export var height: int = 15
 
 @onready var input_manager = $"../InputManager"
-@onready var game_manager = $"../GameManager"
+@onready var gold_manager = $"../GoldManager"
 
 var top_left:
 	get:
@@ -30,9 +30,10 @@ func cell_to_world(cell: Vector2i) -> Vector2:
 func _on_place_unit(start: Vector2, stop: Vector2, unit: UnitData) -> void:
 	var selected_cells = get_cells_in_rect(start, stop)
 	var gold = unit.price * get_unoccupied_cells_in_rect(start, stop).size()
-	if gold > game_manager.gold:
+	if gold > gold_manager.gold:
 		print("Not enough gold!")
 		return
+	gold_manager.spend_gold(gold)
 	for cell in selected_cells:
 		var cell_center = cell_to_world(Vector2i(cell.x, cell.y))
 		if cell in cells:
