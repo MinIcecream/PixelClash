@@ -7,9 +7,8 @@ var hit_units := {}
 func _ready() -> void:
 	area2D.area_entered.connect(Callable(self, "_on_area_entered"))
 
-func _on_area_entered(area: Area2D) -> void:
-	var unit = area.get_parent()
-	if unit in hit_units or unit.data.faction == self.get_parent().data.faction:
+func _on_area_entered(unit: Area2D) -> void:
+	if unit in hit_units or unit.faction == self.get_parent().data.faction:
 		return
 
 	unit.take_damage(self.get_parent().data.damage)

@@ -18,9 +18,8 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(target_position) <= target_radius:
 		area2D.monitoring = true
 
-func _on_area_entered(target: Area2D):
-	var unit = target.get_parent()
-	if unit.data.faction == faction:
+func _on_area_entered(unit: Area2D):
+	if unit.faction == faction:
 		return
 	unit.take_damage(20)
 	queue_free()
