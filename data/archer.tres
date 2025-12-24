@@ -7,7 +7,7 @@
 script = ExtResource("1_yxq25")
 faction = 0
 name = "archer"
-speed = 100.0
+speed = 20.0
 attack_range = 150.0
 attack_cooldown = 1.2
 damage = 6

@@ -17,7 +17,6 @@ signal select_unit
 
 func _ready() -> void:
 	input_manager.drag_release.connect(Callable(self, "_on_drag_release"))
-	input_manager.preview_gold.connect(Callable(self, "_on_preview_gold"))
 	game_manager.game_over.connect(Callable(self, "_on_game_over"))
 	gold_manager.gold_changed.connect(Callable(self, "_on_gold_changed"))
 	play_button.pressed.connect(Callable(self, "_on_start_game_pressed"))
@@ -51,7 +50,7 @@ func on_select_unit(selected_button: TextureButton) -> void:
 	selected_button.darken()
 	emit_signal("select_unit", selected_button.unit)
 
-func _on_preview_gold(gold: int) -> void:
+func set_preview_gold(gold: int) -> void:
 	preview_gold.visible = true
 	preview_gold.text = str(gold) + " gold"
 

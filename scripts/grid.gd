@@ -1,4 +1,6 @@
-extends Node2D
+@tool
+class_name Grid
+extends Node
 
 signal place_unit(position: Vector2, unit: PackedScene)
 
@@ -9,9 +11,8 @@ signal place_unit(position: Vector2, unit: PackedScene)
 @onready var input_manager = $"../InputManager"
 @onready var gold_manager = $"../GoldManager"
 
-var top_left:
-	get:
-		return Vector2(-width * cell_size / 2.0, -height * cell_size / 2.0)
+var top_left = Vector2(-width * cell_size / 2.0, -height * cell_size / 2.0)
+
 var cells = {} #Vector2: unit
 
 func _ready() -> void:

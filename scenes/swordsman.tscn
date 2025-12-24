@@ -1,18 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3jqknk8rk8r2"]
+[gd_scene load_steps=5 format=3 uid="uid://b3jqknk8rk8r2"]
 
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_j1nbv"]
 [ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/swordsman.tres" id="2_6mje0"]
 [ext_resource type="Script" uid="uid://7f80agfwm8xo" path="res://scripts/melee_attack.gd" id="3_6mje0"]
-[ext_resource type="Script" uid="uid://r7ukej54bt4" path="res://scripts/Hurtbox.gd" id="3_r7u1p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j1nbv"]
-radius = 11.0
+radius = 9.0
 
 [node name="CharacterBody2D" instance=ExtResource("1_j1nbv")]
 data = ExtResource("2_6mje0")
-
-[node name="Hurtbox" parent="." index="4"]
-script = ExtResource("3_r7u1p")
 
 [node name="Attack" parent="." index="5"]
 script = ExtResource("3_6mje0")
@@ -23,5 +19,5 @@ collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/Area2D" index="0"]
-position = Vector2(1, 4)
+position = Vector2(1, 5)
 shape = SubResource("CircleShape2D_j1nbv")

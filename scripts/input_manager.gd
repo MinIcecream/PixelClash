@@ -1,8 +1,6 @@
 extends Node2D
 
-signal selection(coords: PackedVector2Array)
 signal place_unit(position: Vector2, unit: UnitData)
-signal preview_gold(cost: int)
 signal drag_release
 
 var start = null
@@ -12,6 +10,8 @@ var selected_unit: UnitData = null
 @onready var gold_manager = $"../GoldManager"
 @onready var UI = $"../UI"
 @onready var grid = $"../Grid"
+@onready var grid_drawer = $"../Grid/Drawer"
+@onready var grid_selection_overlay = $"../Grid/GridSelectionOverlay"
 
 func _ready() -> void:
 	UI.select_unit.connect(Callable(self, "_on_select_unit"))
@@ -28,18 +28,19 @@ func _unhandled_input(event):
 		var cells = grid.get_unoccupied_cells_in_rect(start, stop)
 		if selected_unit != null:
 			var cost = gold_manager.gold - (cells.size() * selected_unit.price)
-			emit_signal("preview_gold", cost)
-		emit_signal("selection", [start, stop])
+			grid_selection_overlay.set_preview_gold(cost)
+			UI.set_preview_gold(cost)
+		grid_selection_overlay.set_selection([start, stop])
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			start = stop
-			emit_signal("selection", [start, start])
+			grid_selection_overlay.set_selection([start, start])
 		else:
 			if start == null:
 				return
 			emit_signal("drag_release")
-			emit_signal("selection", [])
+			grid_selection_overlay.set_selection([])
 			spawn_at_mouse(start, stop)
 			start = null
 

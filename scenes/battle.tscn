@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dvqqm57eu4e21"]
+[gd_scene load_steps=13 format=4 uid="uid://dvqqm57eu4e21"]
 
 [ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_f4pi3"]
 [ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_yahae"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dxwjyobqc2p5r" path="res://scripts/grid_drawer.gd" id="5_03edq"]
 [ext_resource type="PackedScene" uid="uid://dx2ncblkpq1sr" path="res://scenes/enemy.tscn" id="6_22uqi"]
 [ext_resource type="Script" uid="uid://sutuiixeqm62" path="res://scripts/game_manager.gd" id="7_6ni85"]
+[ext_resource type="Script" uid="uid://x02hsm3k7jox" path="res://scripts/grid_selection_overlay.gd" id="7_v7i3o"]
 [ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_vceff"]
 [ext_resource type="Script" uid="uid://7oymaqo1x24t" path="res://scripts/gold_manager.gd" id="9_yahae"]
 
@@ -271,8 +272,10 @@ script = ExtResource("3_v7i3o")
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource("4_66ngm")
 
-[node name="Drawer" type="Node2D" parent="Grid"]
+[node name="Drawer" type="Node2D" parent="Grid" node_paths=PackedStringArray("grid")]
+process_mode = 3
 script = ExtResource("5_03edq")
+grid = NodePath("..")
 
 [node name="CharacterBody2D" parent="Grid" instance=ExtResource("6_22uqi")]
 z_index = 0
@@ -543,6 +546,12 @@ position = Vector2(316, -102)
 z_index = 0
 y_sort_enabled = false
 position = Vector2(338, -102)
+
+[node name="GridEditor" type="Node2D" parent="Grid"]
+
+[node name="GridSelectionOverlay" type="Node2D" parent="Grid" node_paths=PackedStringArray("grid")]
+script = ExtResource("7_v7i3o")
+grid = NodePath("..")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("7_6ni85")
