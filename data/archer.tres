@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://c33u2vildylcy"]
+
+[ext_resource type="PackedScene" uid="uid://prykkcv3osf7" path="res://scenes/death.tscn" id="1_6l0p1"]
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="1_yxq25"]
+
+[resource]
+script = ExtResource("1_yxq25")
+faction = 0
+name = "archer"
+speed = 100.0
+attack_range = 150.0
+attack_cooldown = 1.2
+damage = 6
+health = 18
+price = 3
+death_particles = ExtResource("1_6l0p1")
+size = Vector2(1, 1)
+target_groups = Array[String](["enemy"])
+metadata/_custom_type_script = "uid://bohci6skr4x5g"
