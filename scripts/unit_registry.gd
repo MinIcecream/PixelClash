@@ -1,16 +1,18 @@
+@tool
+
 extends Node
 
 var units := {
 	"swordsman": {
 		"scene": preload("res://scenes/swordsman.tscn"),
-		"data": preload("res://data/swordsman.tres")
+		"data": preload("res://data/units/swordsman.tres")
 	},
 	"archer": {
 		"scene": preload("res://scenes/archer.tscn"),
-		"data": preload("res://data/archer.tres")
+		"data": preload("res://data/units/archer.tres")
 	},
 	"enemy": {
 		"scene": preload("res://scenes/enemy.tscn"),
-		"data": preload("res://data/enemy_test.tres")
+		"data": preload("res://data/units/enemy_test.tres")
 	}
 }

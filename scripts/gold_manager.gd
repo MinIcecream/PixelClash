@@ -1,7 +1,6 @@
 extends Node
 
 signal gold_changed(new_value: int)
-@export var starting_gold = 0
 
 var gold: int:
 	get:
@@ -9,9 +8,6 @@ var gold: int:
 	set(value):
 		gold = value
 		gold_changed.emit(gold)
-
-func _ready() -> void:
-	gold = starting_gold
 
 func get_gold():
 	return gold

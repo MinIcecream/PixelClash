@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3jqknk8rk8r2"]
 
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_j1nbv"]
-[ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/swordsman.tres" id="2_6mje0"]
+[ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/units/swordsman.tres" id="2_6mje0"]
 [ext_resource type="Script" uid="uid://7f80agfwm8xo" path="res://scripts/melee_attack.gd" id="3_6mje0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j1nbv"]
