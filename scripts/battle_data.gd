@@ -4,9 +4,7 @@ extends Resource
 
 @export var grid_width: int = 30
 @export var grid_height: int = 15
-@export var player_grid_width: int = 30
-@export var player_grid_height: int = 15
-@export var player_start: Vector2
+@export var player_grid: Rect2i
 
 @export var player_starting_gold: int = 100
 

@@ -8,20 +8,21 @@ var game_ended = false
 @onready var gold_manager = $"../GoldManager"
 
 var game_started = false
-@export var battle: BattleData
+@export var battle_context: BattleContext
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_spawn_enemy_units()
-	gold_manager.set_gold(battle.player_starting_gold)
+	gold_manager.set_gold(battle_context.get_starting_gold())
 	get_tree().paused = true
 	UI.start_game.connect(Callable(self, "_on_start_game"))
 	UI.restart_game.connect(Callable(self, "_on_restart_game"))
 	grid.place_unit.connect(Callable(self, "_on_place_unit"))
 
 func _spawn_enemy_units():
-	for pos in battle.enemy_units:
-		var unit_data = battle.enemy_units[pos]
+	var enemy_units = battle_context.get_enemy_units()
+	for pos in enemy_units:
+		var unit_data = enemy_units[pos]
 		var unit_scene = UnitRegistry.units[unit_data.name].scene
 		var instance = unit_scene.instantiate()
 		instance.global_position = grid.cell_to_world(pos)

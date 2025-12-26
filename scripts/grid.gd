@@ -5,28 +5,26 @@ extends Node
 signal place_unit(position: Vector2, unit: PackedScene)
 
 @export var cell_size: int = 16
-@export var width: int = 30
-@export var height: int = 15
-
+var width: int
+var height: int
+@export var battle_context: BattleContext
 @onready var input_manager = $"../InputManager"
 @onready var gold_manager = $"../GoldManager"
-
-var top_left = Vector2(-width * cell_size / 2.0, -height * cell_size / 2.0)
 
 var cells = {} #Vector2: unit
 
 func _ready() -> void:
+	width = battle_context.get_player_grid().size.x
+	height = battle_context.get_player_grid().size.y
 	input_manager.connect("place_unit", Callable(self, "_on_place_unit"))
 
 func world_to_cell(pos: Vector2) -> Vector2i:
-	var local = pos - top_left
-
-	var x = int(floor(local.x / cell_size))
-	var y = int(floor(local.y / cell_size))
+	var x = int(floor(pos.x / cell_size))
+	var y = int(floor(pos.y / cell_size))
 	return Vector2i(x, y)
 	
 func cell_to_world(cell: Vector2i) -> Vector2:
-	return top_left + (Vector2(cell) + Vector2(0.5, 0.5)) * cell_size
+	return (Vector2(cell) + Vector2(0.5, 0.5)) * cell_size
 
 func _on_place_unit(start: Vector2, stop: Vector2, unit: UnitData) -> void:
 	var selected_cells = get_cells_in_rect(start, stop)
@@ -48,18 +46,23 @@ func _on_place_unit(start: Vector2, stop: Vector2, unit: UnitData) -> void:
 		cells[cell] = instance
 
 func out_of_bounds_selection(left, right, top, bottom) -> bool:
-	if left < 0 and right < 0:
+	var player_grid = battle_context.get_player_grid()
+	var left_bound = player_grid.position.x
+	var right_bound = player_grid.end.x
+	var top_bound = player_grid.position.y
+	var bottom_bound = player_grid.end.y
+	if left < left_bound and right < left_bound:
 		return true
-	if right >= width and left >= width:
+	if right >= right_bound and left >= right_bound:
 		return true
-	if top < 0 and bottom < 0:
+	if top < top_bound and bottom < top_bound:
 		return true
-	if top >= height and bottom >= height:
+	if top >= bottom_bound and bottom >= bottom_bound:
 		return true
 	return false
 
 func get_cell_bounds(cell: Vector2i) -> Rect2i:
-	var world_pos = top_left + Vector2(cell) * cell_size
+	var world_pos = Vector2(cell) * cell_size
 	return Rect2(world_pos, Vector2i(cell_size, cell_size))
 
 func get_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2]:
@@ -74,11 +77,16 @@ func get_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2]:
 
 	if out_of_bounds_selection(left, right, top, bottom):
 		return output
-
-	var clamped_left = clamp(left, 0, width - 1)
-	var clamped_right = clamp(right, 0, width - 1)
-	var clamped_top = clamp(top, 0, height - 1)
-	var clamped_bottom = clamp(bottom, 0, height - 1)
+	
+	var player_grid = battle_context.get_player_grid()
+	var left_bound = player_grid.position.x
+	var right_bound = player_grid.end.x
+	var top_bound = player_grid.position.y
+	var bottom_bound = player_grid.end.y
+	var clamped_left = clamp(left, left_bound, right_bound)
+	var clamped_right = clamp(right, left_bound, right_bound)
+	var clamped_top = clamp(top, top_bound, bottom_bound)
+	var clamped_bottom = clamp(bottom, top_bound, bottom_bound)
 	
 	for x in range(clamped_left, clamped_right + 1):
 		for y in range(clamped_top, clamped_bottom + 1):
