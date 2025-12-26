@@ -7,6 +7,7 @@ signal place_unit(position: Vector2, unit: PackedScene)
 @export var cell_size: int = 16
 var width: int
 var height: int
+var player_grid: Rect2i
 @export var battle_context: BattleContext
 @onready var input_manager = $"../InputManager"
 @onready var gold_manager = $"../GoldManager"
@@ -14,8 +15,9 @@ var height: int
 var cells = {} #Vector2: unit
 
 func _ready() -> void:
-	width = battle_context.get_player_grid().size.x
-	height = battle_context.get_player_grid().size.y
+	player_grid = battle_context.get_player_grid()
+	width = battle_context.get_grid_width()
+	height = battle_context.get_grid_height()
 	input_manager.connect("place_unit", Callable(self, "_on_place_unit"))
 
 func world_to_cell(pos: Vector2) -> Vector2i:

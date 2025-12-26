@@ -24,6 +24,7 @@ func _ready() -> void:
 	limits_rect = padding_rect
 	global_position.x = limits_rect.position.x + limits_rect.size.x / 2
 	global_position.y = limits_rect.position.y + limits_rect.size.y / 2
+
 func _input(event):
 	# Start drag on right mouse button down
 	if event is InputEventMouseButton:

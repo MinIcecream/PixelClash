@@ -6,23 +6,31 @@ extends Node2D
 @export var grid: Grid
 
 func _draw():
-	_draw_grid_lines()
-	_draw_player_grid_outline()
+	if Engine.is_editor_hint():
+		_draw_all_grid_lines()
+		_draw_player_grid_outline()
+	else:
+		_draw_player_grid_lines()
 
-func _draw_grid_lines():
+func _draw_all_grid_lines():
+	_draw_grid_lines(Rect2i(Vector2(0, 0), Vector2(grid.width, grid.height)))
+
+func _draw_player_grid_lines():
+	_draw_grid_lines(grid.player_grid)
+
+func _draw_grid_lines(rect: Rect2i):
 	# Vertical lines
-	var width = grid.battle_context.get_grid_width()
-	var height = grid.battle_context.get_grid_height()
-
-	for i in range(width + 1):
+	for i in range(rect.position.x, rect.position.x + rect.size.x + 1):
 		var x = grid.cell_size * i
-		var bottom = height * grid.cell_size
-		draw_line(Vector2(x, 0), Vector2(x, bottom), color, 1)
+		var top = rect.position.y * grid.cell_size
+		var bottom = top + rect.size.y * grid.cell_size
+		draw_line(Vector2(x, top), Vector2(x, bottom), color, 1)
 	# Horizontal lines
-	for i in range(height + 1):
+	for i in range(rect.position.y, rect.position.y + rect.size.y + 1):
 		var y = grid.cell_size * i
-		var right = width * grid.cell_size
-		draw_line(Vector2(0, y), Vector2(right, y), color, 1)
+		var left = rect.position.x * grid.cell_size
+		var right = left + rect.size.x * grid.cell_size
+		draw_line(Vector2(left, y), Vector2(right, y), color, 1)
 
 func _draw_player_grid_outline():
 	var cell_rect = grid.battle_context.get_player_grid()
