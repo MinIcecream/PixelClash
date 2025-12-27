@@ -14,6 +14,7 @@ var game_started = false
 func _ready() -> void:
 	_spawn_enemy_units()
 	get_tree().paused = true
+	UI.back_to_main.connect(Callable(self, "_on_back_to_main"))
 	UI.start_game.connect(Callable(self, "_on_start_game"))
 	UI.restart_game.connect(Callable(self, "_on_restart_game"))
 	grid.place_unit.connect(Callable(self, "_on_place_unit"))
@@ -39,7 +40,6 @@ func _spawn_enemy_units():
 		var instance = unit_scene.instantiate()
 		instance.global_position = grid.cell_to_world(pos)
 		self.add_child(instance)
-	
 
 func _on_start_game() -> void:
 	game_started = true
@@ -66,7 +66,12 @@ func _end_game(status: int) -> void:
 	emit_signal("game_over", status)
 	get_tree().paused = true
 	game_ended = true
-	
+
+func _on_back_to_main():
+	get_tree().paused = false
+	BattleSession.battle_state.player_units.clear()
+	SceneChanger.go_to("res://scenes/battle_select.tscn")
+
 func _save_battle_state():
 	var state := BattleSession.battle_state
 	state.player_units.clear()

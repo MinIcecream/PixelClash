@@ -3,6 +3,7 @@ extends CanvasLayer
 signal start_game
 signal restart_game
 signal select_unit
+signal back_to_main
 
 @onready var game_manager = $"../GameManager"
 @onready var gold_manager = $"../GoldManager"
@@ -14,6 +15,7 @@ signal select_unit
 @onready var play_container = $"Control/Play"
 @onready var game_over_container = $"Control/GameOver"
 @onready var preview_gold = $"Control/PreviewGold"
+@onready var back_button = $"Control/BackButton"
 
 func _ready() -> void:
 	input_manager.drag_release.connect(Callable(self, "_on_drag_release"))
@@ -22,9 +24,11 @@ func _ready() -> void:
 	play_button.pressed.connect(Callable(self, "_on_start_game_pressed"))
 	restart_button.pressed.connect(Callable(self, "_on_restart_game_pressed"))
 	gold_label.text = str(gold_manager.gold) + " Gold"
+	back_button.pressed.connect(Callable(self, "_on_back_button_pressed"))
 
 func _on_game_over(status: int) -> void:
 	game_over_container.visible = true
+	back_button.visible = true
 	match status:
 		-1:
 			game_over_label.text = "You Lost!"
@@ -39,10 +43,14 @@ func _on_gold_changed(gold: int):
 func _on_start_game_pressed():
 	play_container.visible = false
 	emit_signal("start_game")
+	back_button.visible = false
 	
 func _on_restart_game_pressed() -> void:
 	emit_signal("restart_game")
-	
+
+func _on_back_button_pressed() -> void:
+	emit_signal("back_to_main")
+
 func on_select_unit(selected_button: TextureButton) -> void:
 	for button in get_tree().get_nodes_in_group("unit_button"):
 		if button != selected_button:
