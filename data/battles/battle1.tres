@@ -6,9 +6,9 @@
 
 [resource]
 script = ExtResource("1_5km34")
-grid_width = 50
-grid_height = 30
-player_grid = Rect2i(10, 7, 30, 15)
+grid_width = 30
+grid_height = 20
+player_grid = Rect2i(0, 5, 30, 15)
 player_starting_gold = 100
 enemy_units = Dictionary[Vector2i, ExtResource("1_m67m7")]({
 Vector2i(0, 0): ExtResource("2_m67m7"),

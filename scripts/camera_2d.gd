@@ -53,7 +53,6 @@ func zoom_camera(delta):
 
 func _process(_delta):
 	var viewport_size := get_viewport_rect().size / zoom 
-	print(viewport_size)
 	var half_w := viewport_size.x * 0.5
 	var half_h := viewport_size.y * 0.5
 

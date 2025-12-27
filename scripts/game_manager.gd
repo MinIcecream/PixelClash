@@ -13,11 +13,23 @@ var game_started = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_spawn_enemy_units()
-	gold_manager.set_gold(battle_context.get_starting_gold())
 	get_tree().paused = true
 	UI.start_game.connect(Callable(self, "_on_start_game"))
 	UI.restart_game.connect(Callable(self, "_on_restart_game"))
 	grid.place_unit.connect(Callable(self, "_on_place_unit"))
+	
+	var starting_gold = battle_context.get_starting_gold()
+	for pos in BattleSession.battle_state.player_units:
+		var unit_name = BattleSession.battle_state.player_units[pos]
+		var cost = UnitRegistry.units[unit_name].data.price
+		var scene = UnitRegistry.units[unit_name].scene
+		starting_gold -= cost
+		var instance = scene.instantiate()
+		instance.global_position = pos
+		self.add_child(instance)
+	
+	gold_manager.set_gold(starting_gold)
+
 
 func _spawn_enemy_units():
 	var enemy_units = battle_context.get_enemy_units()
@@ -31,6 +43,7 @@ func _spawn_enemy_units():
 
 func _on_start_game() -> void:
 	game_started = true
+	_save_battle_state()
 	get_tree().paused = false
 
 func _on_restart_game() -> void:
@@ -43,15 +56,20 @@ func _process(_delta: float) -> void:
 	var enemy_units = get_tree().get_nodes_in_group("enemy").size()
 	
 	if player_units > 0 and enemy_units == 0:
-		end_game(1)
+		_end_game(1)
 	if player_units == 0 and enemy_units > 0:
-		end_game(-1)
+		_end_game(-1)
 	if player_units == 0 and enemy_units == 0:
-		end_game(0)
+		_end_game(0)
 
-func end_game(status: int) -> void:
+func _end_game(status: int) -> void:
 	emit_signal("game_over", status)
 	get_tree().paused = true
 	game_ended = true
 	
-	
+func _save_battle_state():
+	var state := BattleSession.battle_state
+	state.player_units.clear()
+
+	for unit in get_tree().get_nodes_in_group("player"):
+		state.player_units[unit.global_position] = unit.data.name

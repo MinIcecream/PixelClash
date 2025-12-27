@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 UnitRegistry="*res://scripts/unit_registry.gd"
 SceneChanger="*res://scripts/scene_changer.gd"
+BattleSession="*res://scripts/battle_session.gd"
 
 [display]
 
