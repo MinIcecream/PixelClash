@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://p20ekwuj4qec"]
+[gd_scene load_steps=11 format=3 uid="uid://p20ekwuj4qec"]
 
 [ext_resource type="Script" uid="uid://sehtuo110vy2" path="res://scripts/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="2_ro3t7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://c33u2vildylcy" path="res://data/units/archer.tres" id="3_75u2n"]
 [ext_resource type="Texture2D" uid="uid://flqelwjnfdee" path="res://assets/Arrow.png.png" id="4_3wlde"]
 [ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/units/swordsman.tres" id="5_xpksx"]
+[ext_resource type="Script" uid="uid://c3ohiurpgkpi4" path="res://scripts/eraser_ui.gd" id="7_xpksx"]
+[ext_resource type="Texture2D" uid="uid://fpcjumr332uo" path="res://assets/eraser.png" id="8_24e4x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
 bg_color = Color(1, 1, 1, 1)
@@ -155,6 +157,24 @@ stretch_mode = 0
 script = ExtResource("3_5en4g")
 unit = ExtResource("5_xpksx")
 icon = ExtResource("2_ro3t7")
+
+[node name="PanelContainer3" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/PanelContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/PanelContainer/HBoxContainer/PanelContainer3/MarginContainer2" groups=["unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_xpksx")
+icon = ExtResource("8_24e4x")
 
 [node name="PreviewGold" type="Label" parent="Control"]
 visible = false

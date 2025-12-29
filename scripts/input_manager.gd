@@ -20,10 +20,16 @@ var current_interaction: InteractionMode
 @onready var gold_manager = $"../GoldManager"
 @onready var grid_selection_overlay = $"../Grid/GridSelectionOverlay"
 
-func set_mode(mode_type: InteractionModeType, payload: Variant):
+func set_mode(mode_type: InteractionModeType, payload: Variant = null):
 	match mode_type:
 		InteractionModeType.PLACE:
 			current_interaction = PlaceUnitMode.new(payload)
+			current_interaction.grid = grid
+			current_interaction.gold_manager = gold_manager
+			current_interaction.preview_gold.connect(Callable(self, "_on_preview_gold"))
+			current_interaction.clear_preview_gold.connect(Callable(self, "_on_clear_preview_gold"))
+		InteractionModeType.ERASE:
+			current_interaction = EraseUnitMode.new()
 			current_interaction.grid = grid
 			current_interaction.gold_manager = gold_manager
 			current_interaction.preview_gold.connect(Callable(self, "_on_preview_gold"))

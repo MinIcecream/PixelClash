@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl4ej6shrfonc"]
+[gd_scene load_steps=5 format=3 uid="uid://cl4ej6shrfonc"]
 
 [ext_resource type="Script" uid="uid://dtexd8qebo4rh" path="res://scripts/battle_select.gd" id="1_6rp8x"]
 [ext_resource type="Script" uid="uid://cjthknssmm62p" path="res://scripts/battle_select_button.gd" id="2_uqqp6"]
 [ext_resource type="PackedScene" uid="uid://dvqqm57eu4e21" path="res://scenes/battle.tscn" id="3_mh6sm"]
+[ext_resource type="Resource" uid="uid://dm5buox7wyr2h" path="res://data/battles/battle1.tres" id="4_5n6fq"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -35,3 +36,4 @@ text = "Level 1
 "
 script = ExtResource("2_uqqp6")
 scene = ExtResource("3_mh6sm")
+battle = ExtResource("4_5n6fq")

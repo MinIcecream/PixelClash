@@ -8,7 +8,7 @@ var height: int
 var player_grid: Rect2i
 @export var battle_context: BattleContext
 
-var used_cells = {} #Vector2: unit
+var used_cells: Dictionary[Vector2i, CharacterBody2D]
 
 func _ready() -> void:
 	player_grid = battle_context.get_player_grid()
@@ -31,6 +31,7 @@ func place_unit(cell: Vector2i, unit: UnitData) -> void:
 
 	var instance = UnitRegistry.units[unit.name].scene.instantiate()
 	instance.global_position = cell_center
+	instance.origin = cell
 	self.add_child(instance)
 	used_cells[cell] = instance
 
@@ -87,3 +88,15 @@ func get_unit_origins(cells: Array[Vector2i], unit: UnitData) -> Array[Vector2i]
 		if cell not in used_cells:
 			output.append(cell)
 	return output
+
+func get_units_in_cells(cells: Array[Vector2i]) -> Array[CharacterBody2D]:
+	var output: Array[CharacterBody2D] = []
+	for cell in cells:
+		if cell in used_cells:
+			output.append(used_cells[cell])
+	return output
+
+func delete_unit(unit: CharacterBody2D):
+	var cell = unit.origin
+	used_cells.erase(cell)
+	unit.queue_free()

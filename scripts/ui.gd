@@ -51,13 +51,12 @@ func _on_restart_game_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	emit_signal("back_to_main")
 
-func on_select_unit(selected_button: TextureButton) -> void:
+func on_select_tool(selected_button: TextureButton) -> void:
 	for button in get_tree().get_nodes_in_group("unit_button"):
 		if button != selected_button:
 			button.lighten()
 	selected_button.darken()
-	input_manager.set_mode(input_manager.InteractionModeType.PLACE, selected_button.unit)
-
+	
 func _on_preview_gold(gold) -> void:
 	preview_gold.visible = true
 	preview_gold.text = str(gold) + " gold"
