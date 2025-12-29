@@ -10,14 +10,12 @@ var game_ended = false
 var game_started = false
 @export var battle_context: BattleContext
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_spawn_enemy_units()
 	get_tree().paused = true
 	UI.back_to_main.connect(Callable(self, "_on_back_to_main"))
 	UI.start_game.connect(Callable(self, "_on_start_game"))
 	UI.restart_game.connect(Callable(self, "_on_restart_game"))
-	grid.place_unit.connect(Callable(self, "_on_place_unit"))
 	
 	var starting_gold = battle_context.get_starting_gold()
 	for pos in BattleSession.battle_state.player_units:

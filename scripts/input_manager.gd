@@ -1,23 +1,36 @@
 extends Node2D
 
-signal place_unit(position: Vector2, unit: UnitData)
-signal drag_release
+signal select_cells(cells: Array[Vector2i])
+signal preview_gold(gold)
+signal clear_preview_gold()
+
+enum InteractionModeType {
+	SELECT,
+	PLACE,
+	ERASE
+}
 
 var start = null
 var selected_unit: UnitData = null
+var current_interaction: InteractionMode
 
 @onready var game_manager = $"../GameManager"
-@onready var gold_manager = $"../GoldManager"
 @onready var UI = $"../UI"
 @onready var grid = $"../Grid"
-@onready var grid_drawer = $"../Grid/Drawer"
+@onready var gold_manager = $"../GoldManager"
 @onready var grid_selection_overlay = $"../Grid/GridSelectionOverlay"
 
-func _ready() -> void:
-	UI.select_unit.connect(Callable(self, "_on_select_unit"))
+func set_mode(mode_type: InteractionModeType, payload: Variant):
+	match mode_type:
+		InteractionModeType.PLACE:
+			current_interaction = PlaceUnitMode.new(payload)
+			current_interaction.grid = grid
+			current_interaction.gold_manager = gold_manager
+			current_interaction.preview_gold.connect(Callable(self, "_on_preview_gold"))
+			current_interaction.clear_preview_gold.connect(Callable(self, "_on_clear_preview_gold"))
 
 func _unhandled_input(event):
-	if game_manager.game_started:
+	if game_manager.game_started or not current_interaction:
 		return
 
 	var stop = get_global_mouse_position()
@@ -25,31 +38,26 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		if start == null:
 			return
-		var cells = grid.get_unoccupied_cells_in_rect(start, stop)
-		if selected_unit != null:
-			var cost = gold_manager.gold - (cells.size() * selected_unit.price)
-			grid_selection_overlay.set_preview_gold(cost)
-			UI.set_preview_gold(cost)
-		grid_selection_overlay.set_selection([start, stop])
+		var cells = grid.get_cells_in_rect(start, stop)
+		current_interaction.on_drag(cells)
+		emit_signal("select_cells", [start, stop])
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			start = stop
-			grid_selection_overlay.set_selection([start, start])
+			var cells = grid.get_cells_in_rect(start, stop)
+			current_interaction.on_press(cells)
+			emit_signal("select_cells", [start, stop])
 		else:
 			if start == null:
 				return
-			emit_signal("drag_release")
-			grid_selection_overlay.set_selection([])
-			spawn_at_mouse(start, stop)
+			var cells = grid.get_cells_in_rect(start, stop)
+			current_interaction.on_release(cells)
+			emit_signal("select_cells", [])
 			start = null
 
+func _on_preview_gold(gold: int):
+	emit_signal("preview_gold", gold)
 
-func spawn_at_mouse(first_pos, second_pos):
-	if selected_unit == null:
-		print("no unit selected!")
-		return
-	emit_signal("place_unit", first_pos, second_pos, selected_unit)
-
-func _on_select_unit(unit: UnitData):
-	selected_unit = unit
+func _on_clear_preview_gold():
+	emit_signal("clear_preview_gold")

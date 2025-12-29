@@ -2,23 +2,18 @@
 class_name Grid
 extends Node
 
-signal place_unit(position: Vector2, unit: PackedScene)
-
 @export var cell_size: int = 16
 var width: int
 var height: int
 var player_grid: Rect2i
 @export var battle_context: BattleContext
-@onready var input_manager = $"../InputManager"
-@onready var gold_manager = $"../GoldManager"
 
-var cells = {} #Vector2: unit
+var used_cells = {} #Vector2: unit
 
 func _ready() -> void:
 	player_grid = battle_context.get_player_grid()
 	width = battle_context.get_grid_width()
 	height = battle_context.get_grid_height()
-	input_manager.connect("place_unit", Callable(self, "_on_place_unit"))
 
 func world_to_cell(pos: Vector2) -> Vector2i:
 	var x = int(floor(pos.x / cell_size))
@@ -28,27 +23,18 @@ func world_to_cell(pos: Vector2) -> Vector2i:
 func cell_to_world(cell: Vector2i) -> Vector2:
 	return (Vector2(cell) + Vector2(0.5, 0.5)) * cell_size
 
-func _on_place_unit(start: Vector2, stop: Vector2, unit: UnitData) -> void:
-	var selected_cells = get_cells_in_rect(start, stop)
-	var gold = unit.price * get_unoccupied_cells_in_rect(start, stop).size()
-	if gold > gold_manager.gold:
-		print("Not enough gold!")
+func place_unit(cell: Vector2i, unit: UnitData) -> void:
+	var cell_center = cell_to_world(Vector2i(cell.x, cell.y))
+	if cell in used_cells:
+		print("Cell already occupied!")
 		return
-	gold_manager.spend_gold(gold)
-	for cell in selected_cells:
-		var cell_center = cell_to_world(Vector2i(cell.x, cell.y))
-		if cell in cells:
-			print("Cell already occupied!")
-			continue
 
-		place_unit.emit(cell_center, unit)
-		var instance = UnitRegistry.units[unit.name].scene.instantiate()
-		instance.global_position = cell_center
-		add_child(instance)
-		cells[cell] = instance
+	var instance = UnitRegistry.units[unit.name].scene.instantiate()
+	instance.global_position = cell_center
+	self.add_child(instance)
+	used_cells[cell] = instance
 
 func out_of_bounds_selection(left, right, top, bottom) -> bool:
-	var player_grid = battle_context.get_player_grid()
 	var left_bound = player_grid.position.x
 	var right_bound = player_grid.end.x
 	var top_bound = player_grid.position.y
@@ -67,7 +53,7 @@ func get_cell_bounds(cell: Vector2i) -> Rect2i:
 	var world_pos = Vector2(cell) * cell_size
 	return Rect2(world_pos, Vector2i(cell_size, cell_size))
 
-func get_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2]:
+func get_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2i]:
 	var cell1 = world_to_cell(start)
 	var cell2 = world_to_cell(stop)
 
@@ -75,12 +61,11 @@ func get_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2]:
 	var right = max(cell1.x, cell2.x)
 	var top = min(cell1.y, cell2.y)
 	var bottom = max(cell1.y, cell2.y)
-	var output: Array[Vector2] = []
+	var output: Array[Vector2i] = []
 
 	if out_of_bounds_selection(left, right, top, bottom):
 		return output
 	
-	var player_grid = battle_context.get_player_grid()
 	var left_bound = player_grid.position.x
 	var right_bound = player_grid.end.x
 	var top_bound = player_grid.position.y
@@ -92,14 +77,13 @@ func get_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2]:
 	
 	for x in range(clamped_left, clamped_right + 1):
 		for y in range(clamped_top, clamped_bottom + 1):
-			output.append(Vector2(x, y))
+			output.append(Vector2i(x, y))
 
 	return output
 
-func get_unoccupied_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2]:
-	var selected_cells = get_cells_in_rect(start, stop)
-	var output: Array[Vector2] = []
-	for cell in selected_cells:
-		if cell not in cells:
+func get_unit_origins(cells: Array[Vector2i], unit: UnitData) -> Array[Vector2i]:
+	var output: Array[Vector2i] = []
+	for cell in cells:
+		if cell not in used_cells:
 			output.append(cell)
 	return output

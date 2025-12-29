@@ -2,7 +2,6 @@ extends CanvasLayer
 
 signal start_game
 signal restart_game
-signal select_unit
 signal back_to_main
 
 @onready var game_manager = $"../GameManager"
@@ -18,7 +17,8 @@ signal back_to_main
 @onready var back_button = $"Control/BackButton"
 
 func _ready() -> void:
-	input_manager.drag_release.connect(Callable(self, "_on_drag_release"))
+	input_manager.preview_gold.connect(Callable(self, "_on_preview_gold"))
+	input_manager.clear_preview_gold.connect(Callable(self, "_on_clear_preview_gold"))
 	game_manager.game_over.connect(Callable(self, "_on_game_over"))
 	gold_manager.gold_changed.connect(Callable(self, "_on_gold_changed"))
 	play_button.pressed.connect(Callable(self, "_on_start_game_pressed"))
@@ -56,14 +56,14 @@ func on_select_unit(selected_button: TextureButton) -> void:
 		if button != selected_button:
 			button.lighten()
 	selected_button.darken()
-	emit_signal("select_unit", selected_button.unit)
+	input_manager.set_mode(input_manager.InteractionModeType.PLACE, selected_button.unit)
 
-func set_preview_gold(gold: int) -> void:
+func _on_preview_gold(gold) -> void:
 	preview_gold.visible = true
 	preview_gold.text = str(gold) + " gold"
 
 	var mouse_pos := get_viewport().get_mouse_position()
 	preview_gold.global_position = mouse_pos + Vector2(24, -14)
 
-func _on_drag_release():
+func _on_clear_preview_gold() -> void:
 	preview_gold.visible = false
