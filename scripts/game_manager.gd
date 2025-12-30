@@ -40,7 +40,7 @@ func _on_start_game() -> void:
 	get_tree().paused = false
 
 func _on_restart_game() -> void:
-	get_tree().reload_current_scene()
+	SceneChanger.reload_battle()
 
 func _process(_delta: float) -> void:
 	if game_ended:

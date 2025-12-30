@@ -9,4 +9,4 @@ func _ready() -> void:
 	text = battle.display_name
 
 func _on_pressed():
-	parent.load_scene(scene, battle)
+	SceneChanger.load_battle(scene, battle)
