@@ -3,8 +3,8 @@ class_name UITool
 @export var icon: CompressedTexture2D
 
 @onready var panel = $"../.."
-@onready var parent = $"../../../../../.."
-@onready var input_manager = $"../../../../../../../InputManager"
+@onready var parent = $"../../../../.."
+@onready var input_manager = $"../../../../../../InputManager"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

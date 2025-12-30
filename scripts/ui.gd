@@ -25,6 +25,13 @@ func _ready() -> void:
 	restart_button.pressed.connect(Callable(self, "_on_restart_game_pressed"))
 	gold_label.text = str(gold_manager.gold) + " Gold"
 	back_button.pressed.connect(Callable(self, "_on_back_button_pressed"))
+	
+	var unlocked_units = UnlockManager.get_unlocked_units()
+	for button in get_tree().get_nodes_in_group("unit_button"):
+
+		if button.unit.name not in unlocked_units:
+			print(button.unit.name)
+			button.panel.visible = false
 
 func _on_game_over(status: int) -> void:
 	game_over_container.visible = true
@@ -52,7 +59,7 @@ func _on_back_button_pressed() -> void:
 	emit_signal("back_to_main")
 
 func on_select_tool(selected_button: TextureButton) -> void:
-	for button in get_tree().get_nodes_in_group("unit_button"):
+	for button in get_tree().get_nodes_in_group("ui_tool"):
 		if button != selected_button:
 			button.lighten()
 	selected_button.darken()
