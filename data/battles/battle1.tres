@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("1_5km34")
+id = "battle_01"
+display_name = "Battle 1"
 grid_width = 30
 grid_height = 20
 player_grid = Rect2i(0, 5, 30, 15)

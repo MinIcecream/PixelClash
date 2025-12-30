@@ -2,6 +2,8 @@
 class_name BattleData
 extends Resource
 
+@export var id: String
+@export var display_name: String
 @export var grid_width: int = 30
 @export var grid_height: int = 15
 @export var player_grid: Rect2i

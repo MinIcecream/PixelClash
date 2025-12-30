@@ -2,7 +2,7 @@
 class_name BattleContext
 extends Node
 
-@export var battle_data: BattleData
+var battle_data: BattleData
 
 func get_grid_width() -> int:
 	return battle_data.grid_width

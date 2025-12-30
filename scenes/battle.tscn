@@ -312,4 +312,3 @@ grid = NodePath("../../Grid")
 
 [node name="BattleContext" type="Node" parent="."]
 script = ExtResource("14_vceff")
-battle_data = ExtResource("12_03edq")
