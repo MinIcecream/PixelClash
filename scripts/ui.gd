@@ -28,9 +28,7 @@ func _ready() -> void:
 	
 	var unlocked_units = UnlockManager.get_unlocked_units()
 	for button in get_tree().get_nodes_in_group("unit_button"):
-
 		if button.unit.name not in unlocked_units:
-			print(button.unit.name)
 			button.panel.visible = false
 
 func _on_game_over(status: int) -> void:

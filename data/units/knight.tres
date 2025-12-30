@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://dunh42025fc0j"]
+
+[ext_resource type="PackedScene" uid="uid://prykkcv3osf7" path="res://scenes/death.tscn" id="1_nc7ly"]
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="2_lxsdm"]
+
+[resource]
+script = ExtResource("2_lxsdm")
+faction = 0
+name = "knight"
+speed = 25.0
+attack_range = 15.0
+attack_cooldown = 0.6
+damage = 16
+health = 100
+price = 10
+death_particles = ExtResource("1_nc7ly")
+size = Vector2(2, 2)
+target_groups = Array[String](["enemy"])
+metadata/_custom_type_script = "uid://bohci6skr4x5g"

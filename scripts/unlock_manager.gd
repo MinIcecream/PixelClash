@@ -2,7 +2,8 @@ extends Node
 
 var units: Dictionary[String, bool] = {
 	"swordsman": true,
-	"archer": true
+	"archer": true,
+	"knight": true
 }
 
 func get_unlocked_units() -> Array[String]:

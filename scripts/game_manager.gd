@@ -69,4 +69,5 @@ func _save_battle_state():
 	var state := BattleSession.battle_state
 	state.player_units.clear()
 	for pos in grid.used_cells:
-		state.player_units[pos] = grid.used_cells[pos].data
+		var origin = grid.used_cells[pos].origin
+		state.player_units[origin] = grid.used_cells[pos].data
