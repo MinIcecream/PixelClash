@@ -20,7 +20,10 @@ func _on_area_entered(unit: Area2D) -> void:
 func _apply_hit_effects(_unit: Area2D) -> void:
 	pass
 
-func _do_attack(_target: Node2D) -> void:
+func _do_attack(target: Node2D) -> void:
+	var dir = target.global_position - self.global_position
+	area2D.rotation = dir.angle()
+
 	await get_tree().create_timer(0.5).timeout
 	enable_hitbox()
 	await get_tree().create_timer(0.2).timeout
