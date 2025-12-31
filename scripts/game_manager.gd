@@ -31,7 +31,7 @@ func _spawn_enemy_units():
 		var unit_data = enemy_units[pos]
 		var unit_scene = UnitRegistry.units[unit_data.name].scene
 		var instance = unit_scene.instantiate()
-		instance.global_position = grid.cell_to_world(pos)
+		instance.global_position = grid.world_pos_to_spawn_unit(pos, unit_data)
 		self.add_child(instance)
 
 func _on_start_game() -> void:

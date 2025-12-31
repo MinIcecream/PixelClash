@@ -5,7 +5,7 @@ enum Faction { PLAYER, ENEMY, NEUTRAL }
 @onready var get_target = $"GetTarget"
 @onready var movement = $"Movement"
 @onready var attack = $"Attack"
-
+@onready var sprite = $"Sprite2D"
 @export var data: Resource
 
 var origin = Vector2.ZERO
@@ -43,8 +43,14 @@ func _process(_delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	flash_red()
 	if health <= 0:
 		var death_particles = data.death_particles.instantiate()
 		death_particles.global_position = global_position
 		get_tree().current_scene.add_child(death_particles)
 		queue_free()
+
+func flash_red():
+	sprite.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color.WHITE

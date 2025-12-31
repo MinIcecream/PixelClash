@@ -19,8 +19,9 @@ func refresh_ghosts():
 		return
 
 	for position in battle_data.enemy_units:
-		var ghost = UnitRegistry.units[battle_data.enemy_units[position].name].scene.instantiate()
+		var unit = UnitRegistry.units[battle_data.enemy_units[position].name]
+		var ghost = unit.scene.instantiate()
 		ghost.modulate = Color(1,1,1,0.5)
-		ghost.position = grid.cell_to_world(position)
+		ghost.position = grid.world_pos_to_spawn_unit(position, unit.data)
 		add_child(ghost)
 		ghost_units.append(ghost)

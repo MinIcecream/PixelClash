@@ -20,11 +20,18 @@ func world_to_cell(pos: Vector2) -> Vector2i:
 	var y = int(floor(pos.y / cell_size))
 	return Vector2i(x, y)
 	
-func cell_to_world(cell: Vector2i) -> Vector2:
-	return (Vector2(cell) + Vector2(0.5, 0.5)) * cell_size
+# func cell_to_world(cell: Vector2i) -> Vector2:
+# 	return (Vector2(cell) + Vector2(0.5, 0.5)) * cell_size
+
+func world_pos_to_spawn_unit(origin: Vector2i, unit: UnitData) -> Vector2:
+	var center_x = origin.x + unit.size.x / 2.0
+	var center_y = origin.y + unit.size.y / 2.0
+	
+	return Vector2(center_x, center_y) * cell_size
+	
 
 func place_unit(cell: Vector2i, unit: UnitData) -> void:
-	var cell_center = cell_to_world(Vector2i(cell.x, cell.y))
+	var cell_center = world_pos_to_spawn_unit(Vector2i(cell.x, cell.y), unit)
 	if cell in used_cells:
 		print("Cell already occupied!")
 		return
