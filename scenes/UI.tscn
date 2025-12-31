@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://p20ekwuj4qec"]
+[gd_scene load_steps=12 format=3 uid="uid://p20ekwuj4qec"]
 
 [ext_resource type="Script" uid="uid://sehtuo110vy2" path="res://scripts/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="2_ro3t7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dunh42025fc0j" path="res://data/units/knight.tres" id="7_ukj8e"]
 [ext_resource type="Script" uid="uid://c3ohiurpgkpi4" path="res://scripts/eraser_ui.gd" id="7_xpksx"]
 [ext_resource type="Texture2D" uid="uid://fpcjumr332uo" path="res://assets/eraser.png" id="8_24e4x"]
+[ext_resource type="Texture2D" uid="uid://ilumwvqhyr17" path="res://assets/New Piskel.png" id="8_w7enk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(1, 1, 1, 1)
@@ -157,7 +158,7 @@ layout_mode = 2
 stretch_mode = 0
 script = ExtResource("3_5en4g")
 unit = ExtResource("7_ukj8e")
-icon = ExtResource("2_ro3t7")
+icon = ExtResource("8_w7enk")
 
 [node name="PanelContainer3" type="PanelContainer" parent="Control/HBoxContainer"]
 layout_mode = 2

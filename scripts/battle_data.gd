@@ -13,6 +13,7 @@ extends Resource
 @export var enemy_units: Dictionary[Vector2i, UnitData] = {}
 
 func add_unit(cell: Vector2i, unit: UnitData) -> void:
+	print("Hi")
 	enemy_units[cell] = unit
 
 func remove_unit(cell: Vector2i) -> void:

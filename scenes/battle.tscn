@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://x02hsm3k7jox" path="res://scripts/grid_selection_overlay.gd" id="7_v7i3o"]
 [ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_vceff"]
 [ext_resource type="Script" uid="uid://7oymaqo1x24t" path="res://scripts/gold_manager.gd" id="9_yahae"]
+[ext_resource type="Resource" uid="uid://dqofnt3cy6alk" path="res://data/battles/battle2.tres" id="11_6ni85"]
 [ext_resource type="Script" uid="uid://cfs4xm81lihbd" path="res://scripts/battle_editor.gd" id="11_66ngm"]
-[ext_resource type="Resource" uid="uid://dm5buox7wyr2h" path="res://data/battles/battle1.tres" id="12_03edq"]
 [ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/units/enemy_test.tres" id="13_22uqi"]
 [ext_resource type="Script" uid="uid://bmxsod57q4phu" path="res://scripts/battle_visualizer.gd" id="14_6ni85"]
 [ext_resource type="Script" uid="uid://lsmyecm87bs2" path="res://scripts/battle_context.gd" id="14_vceff"]
@@ -302,9 +302,10 @@ script = ExtResource("9_yahae")
 
 [node name="BattleEditor" type="Node" parent="." node_paths=PackedStringArray("grid")]
 script = ExtResource("11_66ngm")
-battle_data = ExtResource("12_03edq")
+battle_data = ExtResource("11_6ni85")
 grid = NodePath("../Grid")
 selected_unit = ExtResource("13_22uqi")
+enabled = true
 
 [node name="BattleVisualizer" type="Node" parent="BattleEditor" node_paths=PackedStringArray("grid")]
 script = ExtResource("14_6ni85")

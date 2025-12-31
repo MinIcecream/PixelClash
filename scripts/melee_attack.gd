@@ -1,5 +1,7 @@
 extends Attack
 
+class_name MeleeAttack
+
 @onready var area2D = $"Area2D"
 
 var hit_units := {}
@@ -13,6 +15,10 @@ func _on_area_entered(unit: Area2D) -> void:
 
 	unit.take_damage(self.get_parent().data.damage)
 	hit_units[unit] = true
+	_apply_hit_effects(unit)
+
+func _apply_hit_effects(_unit: Area2D) -> void:
+	pass
 
 func _do_attack(_target: Node2D) -> void:
 	await get_tree().create_timer(0.5).timeout

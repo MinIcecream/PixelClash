@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos = grid.get_local_mouse_position()
 		var cell = grid.world_to_cell(mouse_pos)
-
 		if cell.x < 0 or cell.y < 0:
 			return
 		if cell.x >= grid.width or cell.y >= grid.height:

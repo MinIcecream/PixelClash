@@ -23,10 +23,19 @@ BattleSession="*res://scripts/battle_session.gd"
 UnlockManager="*res://scripts/unlock_manager.gd"
 BattleRegistry="*res://scripts/battle_registry.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/warnings/integer_division=1
+movie_writer/templates_search_path="res://script_templates"
 
 [rendering]
 

@@ -33,7 +33,7 @@ func _draw_grid_lines(rect: Rect2i):
 		draw_line(Vector2(left, y), Vector2(right, y), color, 1)
 
 func _draw_player_grid_outline():
-	var cell_rect = grid.battle_context.get_player_grid()
+	var cell_rect = grid.player_grid
 	var world_rect = Rect2(
 		cell_rect.position * grid.cell_size,
 		cell_rect.size * grid.cell_size)
