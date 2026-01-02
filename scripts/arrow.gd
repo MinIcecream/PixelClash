@@ -2,7 +2,7 @@ extends Projectile
 
 @onready var area2D = $"Area2D"
 @export var lifeTime = 10
-@export var target_radius = 2
+@export var target_radius = 4
 @export var speed = 240
 
 func _ready() -> void:

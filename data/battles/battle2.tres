@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="BattleData" load_steps=3 format=3 uid="uid://dqofnt3cy6alk"]
+[gd_resource type="Resource" script_class="BattleData" load_steps=4 format=3 uid="uid://dqofnt3cy6alk"]
 
 [ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="1_iq0kp"]
+[ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/units/enemy_test.tres" id="2_iq0kp"]
 [ext_resource type="Script" uid="uid://bj3u735fxoeid" path="res://scripts/battle_data.gd" id="3_ly321"]
 
 [resource]
@@ -11,5 +12,7 @@ grid_width = 30
 grid_height = 20
 player_grid = Rect2i(0, 5, 30, 15)
 player_starting_gold = 100
-enemy_units = Dictionary[Vector2i, ExtResource("1_iq0kp")]({})
+enemy_units = Dictionary[Vector2i, ExtResource("1_iq0kp")]({
+Vector2i(0, 0): ExtResource("2_iq0kp")
+})
 metadata/_custom_type_script = "uid://bj3u735fxoeid"

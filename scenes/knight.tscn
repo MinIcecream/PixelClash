@@ -1,17 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6o1gacx1slmq"]
+[gd_scene load_steps=8 format=3 uid="uid://b6o1gacx1slmq"]
 
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_dp28g"]
 [ext_resource type="Resource" uid="uid://dunh42025fc0j" path="res://data/units/knight.tres" id="2_3i0j8"]
 [ext_resource type="Texture2D" uid="uid://ilumwvqhyr17" path="res://assets/New Piskel.png" id="3_0dyjn"]
 [ext_resource type="Script" uid="uid://b5843emgbf5rm" path="res://scripts/cleave_attack.gd" id="5_5fsgc"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0dyjn"]
+radius = 23.7066
+height = 62.5485
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fsgc"]
+height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dyjn"]
+radius = 16.0
 
 [node name="CharacterBody2D" instance=ExtResource("1_dp28g")]
+collision_mask = 0
 data = ExtResource("2_3i0j8")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_0dyjn")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(2, 3)
+rotation = -0.0217394
+shape = SubResource("CapsuleShape2D_0dyjn")
+disabled = false
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2(2, 2)
@@ -26,5 +41,12 @@ collision_mask = 2
 monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D" index="0"]
-position = Vector2(13, -7)
-polygon = PackedVector2Array(-11, 11, 3, 28, 12, 24, 16, 10, 12, -3, 2, -9)
+position = Vector2(11, -6)
+polygon = PackedVector2Array(-11, 11, -11, 28, 14, 33, 22, 12, 17, -13, -11, -10)
+
+[node name="AvoidanceArea" parent="." index="6"]
+collision_layer = 0
+
+[node name="CollisionShape2D" parent="AvoidanceArea" index="0"]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_0dyjn")

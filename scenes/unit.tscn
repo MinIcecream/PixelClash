@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfrc287phd4w7"]
+[gd_scene load_steps=10 format=3 uid="uid://bfrc287phd4w7"]
 
 [ext_resource type="Script" uid="uid://dderir6mrbp8k" path="res://scripts/unit_manager.gd" id="1_3i0j8"]
 [ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="1_dp28g"]
@@ -8,11 +8,14 @@
 [ext_resource type="Script" uid="uid://tk3v3vbtjifb" path="res://scripts/attack.gd" id="5_ruro2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tb304"]
-radius = 10.7783
+radius = 8.62262
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ruro2"]
 radius = 5.0
 height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ruro2"]
+radius = 12.0416
 
 [node name="CharacterBody2D3" type="CharacterBody2D"]
 z_index = 5
@@ -23,7 +26,7 @@ script = ExtResource("1_3i0j8")
 texture = ExtResource("1_dp28g")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-position = Vector2(1, 9)
+position = Vector2(1, 8)
 rotation = 1.57638
 scale = Vector2(0.463897, -0.447547)
 shape = SubResource("CircleShape2D_tb304")
@@ -45,3 +48,9 @@ shape = SubResource("CapsuleShape2D_ruro2")
 
 [node name="Attack" type="Node2D" parent="."]
 script = ExtResource("5_ruro2")
+
+[node name="AvoidanceArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidanceArea"]
+position = Vector2(1, 5)
+shape = SubResource("CircleShape2D_ruro2")

@@ -6,8 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://mlmw1c422a2b" path="res://scenes/archer_arrow.tscn" id="4_cctdm"]
 
 [node name="CharacterBody2D" instance=ExtResource("1_jggnj")]
+collision_mask = 0
 data = ExtResource("2_b0l3x")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(1, 6)
 
 [node name="Attack" parent="." index="5"]
 script = ExtResource("3_orquw")
 projectile = ExtResource("4_cctdm")
+
+[node name="AvoidanceArea" parent="." index="6"]
+collision_layer = 0

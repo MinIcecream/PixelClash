@@ -1,30 +1,28 @@
 extends Node2D
+@onready var avoidance_area = $"../AvoidanceArea"
 
-func separation_force(radius: float) -> Vector2:
+func separation_force() -> Vector2:
 	var force := Vector2.ZERO
-	var allies = get_tree().get_nodes_in_group(get_parent().group_name)
-
-	for ally in allies:
-		if ally == self:
+	for body in avoidance_area.get_overlapping_bodies():
+		if body == self or not body.is_in_group(get_parent().group_name):
 			continue
 
-		var offset = global_position - ally.global_position
+		var offset = global_position - body.global_position
 		var d = offset.length()
 
-		if d == 0 or d > radius:
+		if d == 0:
 			continue
 
 		force += offset.normalized() * (1.0 / d)
-
 	return force
 
 func move_to_target(target: Node, delta: float) -> void:
 	if target == null:
 		return
-
-	var sep = separation_force(24)
+	var sep = separation_force()
 	var to_target = target.global_position - global_position
-	var dir = (to_target + sep * 100).normalized()
-	get_parent().velocity = dir * get_parent().data.speed
+	var dir = (to_target + sep * 1000).normalized()
+	var desired = dir * get_parent().data.speed
+	get_parent().velocity = get_parent().velocity.lerp(desired, 8.0 * delta)
 	get_parent().move_and_slide()
 	
