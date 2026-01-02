@@ -26,7 +26,6 @@ texture = ExtResource("3_0dyjn")
 position = Vector2(2, 3)
 rotation = -0.0217394
 shape = SubResource("CapsuleShape2D_0dyjn")
-disabled = false
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2(2, 2)

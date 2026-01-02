@@ -1,7 +1,5 @@
 extends Attack
-
 class_name MeleeAttack
-
 @onready var area2D = $"Area2D"
 
 var hit_units := {}

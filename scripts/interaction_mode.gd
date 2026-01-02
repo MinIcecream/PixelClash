@@ -2,11 +2,11 @@ extends RefCounted
 
 class_name InteractionMode
 
-func on_press(cell: Array[Vector2i]) -> void:
+func on_press(_cell: Array[Vector2i]) -> void:
 	pass
 
-func on_drag(cells: Array[Vector2i]) -> void:
+func on_drag(_cells: Array[Vector2i]) -> void:
 	pass
 
-func on_release(cells: Array[Vector2i]) -> void:
+func on_release(_cells: Array[Vector2i]) -> void:
 	pass

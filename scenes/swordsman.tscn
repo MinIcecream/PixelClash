@@ -5,12 +5,10 @@
 [ext_resource type="Script" uid="uid://7f80agfwm8xo" path="res://scripts/melee_attack.gd" id="3_6mje0"]
 
 [node name="CharacterBody2D2" instance=ExtResource("1_j1nbv")]
-collision_mask = 0
 data = ExtResource("2_6mje0")
 
 [node name="Collider" parent="." index="1"]
 position = Vector2(1, 7)
-disabled = false
 
 [node name="Attack" parent="." index="5"]
 script = ExtResource("3_6mje0")

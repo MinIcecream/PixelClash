@@ -3,7 +3,8 @@ extends Node
 var units: Dictionary[String, bool] = {
 	"swordsman": true,
 	"archer": true,
-	"knight": true
+	"knight": true,
+	"calvalry": true
 }
 
 var battles: Dictionary[String, bool] = {

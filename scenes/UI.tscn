@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://p20ekwuj4qec"]
+[gd_scene load_steps=14 format=3 uid="uid://p20ekwuj4qec"]
 
 [ext_resource type="Script" uid="uid://sehtuo110vy2" path="res://scripts/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="2_ro3t7"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://c3ohiurpgkpi4" path="res://scripts/eraser_ui.gd" id="7_xpksx"]
 [ext_resource type="Texture2D" uid="uid://fpcjumr332uo" path="res://assets/eraser.png" id="8_24e4x"]
 [ext_resource type="Texture2D" uid="uid://ilumwvqhyr17" path="res://assets/New Piskel.png" id="8_w7enk"]
+[ext_resource type="Resource" uid="uid://cbugrljphdybe" path="res://data/units/calvalry.tres" id="9_7paak"]
+[ext_resource type="Texture2D" uid="uid://clw2nm2hhuwaw" path="res://assets/New Piskel (1).png" id="10_5sqrc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(1, 1, 1, 1)
@@ -159,6 +161,24 @@ stretch_mode = 0
 script = ExtResource("3_5en4g")
 unit = ExtResource("7_ukj8e")
 icon = ExtResource("8_w7enk")
+
+[node name="PanelContainer5" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer5"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer5/MarginContainer2" groups=["ui_tool", "unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("3_5en4g")
+unit = ExtResource("9_7paak")
+icon = ExtResource("10_5sqrc")
 
 [node name="PanelContainer3" type="PanelContainer" parent="Control/HBoxContainer"]
 layout_mode = 2

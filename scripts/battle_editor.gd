@@ -7,7 +7,7 @@ extends Node
 @export var enabled = false
 var dirty = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not enabled:
 		return
 	if not Engine.is_editor_hint():

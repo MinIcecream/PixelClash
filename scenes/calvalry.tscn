@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7wnbv6ufr2bg"]
+
+[ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_2ytdy"]
+[ext_resource type="Texture2D" uid="uid://clw2nm2hhuwaw" path="res://assets/New Piskel (1).png" id="2_tjt8q"]
+[ext_resource type="Resource" uid="uid://cbugrljphdybe" path="res://data/units/calvalry.tres" id="2_uo2o1"]
+[ext_resource type="Script" uid="uid://bmm5dprukp8wp" path="res://scripts/charge_attack.gd" id="4_uo2o1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uo2o1"]
+size = Vector2(16.6332, 46.4044)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krby6"]
+size = Vector2(8.99863, 20.1032)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjt8q"]
+size = Vector2(21, 9)
+
+[node name="CharacterBody2D3" instance=ExtResource("1_2ytdy")]
+data = ExtResource("2_uo2o1")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_tjt8q")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(2.98023e-08, 2)
+scale = Vector2(0.463897, -0.447547)
+shape = SubResource("RectangleShape2D_uo2o1")
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2(0.0284591, 1.32595)
+rotation = 1.58825
+shape = SubResource("RectangleShape2D_krby6")
+
+[node name="Attack" parent="." index="5"]
+script = ExtResource("4_uo2o1")
+
+[node name="Area2D" type="Area2D" parent="Attack" index="0"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D" index="0"]
+position = Vector2(5, 1)
+polygon = PackedVector2Array(11, -26, -1, -1, 11, 22)
+
+[node name="CollisionShape2D" parent="AvoidanceArea" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_tjt8q")

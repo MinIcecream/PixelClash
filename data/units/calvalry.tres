@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://cbugrljphdybe"]
+
+[ext_resource type="PackedScene" uid="uid://prykkcv3osf7" path="res://scenes/death.tscn" id="1_u3qng"]
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="2_swdr4"]
+
+[resource]
+script = ExtResource("2_swdr4")
+faction = 0
+name = "calvalry"
+speed = 30.0
+attack_range = 60.0
+attack_cooldown = 0.8
+damage = 8
+health = 50
+price = 5
+death_particles = ExtResource("1_u3qng")
+size = Vector2i(2, 1)
+target_groups = Array[String](["enemy", ""])
+metadata/_custom_type_script = "uid://bohci6skr4x5g"

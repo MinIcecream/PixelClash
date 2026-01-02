@@ -19,7 +19,6 @@ texture = ExtResource("3_4ra3w")
 position = Vector2(1, 7)
 rotation = 3.18064
 shape = SubResource("CircleShape2D_5uy6h")
-disabled = false
 
 [node name="Attack" parent="." index="5"]
 script = ExtResource("4_5uy6h")

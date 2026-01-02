@@ -7,7 +7,7 @@
 script = ExtResource("1_kusvv")
 faction = 1
 name = "enemy"
-speed = 35.0
+speed = 30.0
 attack_range = 20.0
 attack_cooldown = 0.8
 damage = 8
