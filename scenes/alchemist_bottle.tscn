@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk2dhcfbs4ge0"]
+
+[ext_resource type="Script" uid="uid://bhpmljku0rnov" path="res://scripts/alchemist_bottle.gd" id="1_7muwn"]
+[ext_resource type="Texture2D" uid="uid://df1o2o2xu4w0j" path="res://assets/New Piskel (3).png" id="2_7muwn"]
+[ext_resource type="PackedScene" uid="uid://ccnvorbjvy66" path="res://scenes/alchemist_pool.tscn" id="2_mik7t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gwxl"]
+radius = 2.0
+
+[node name="Bottle" type="Node2D"]
+script = ExtResource("1_7muwn")
+pool = ExtResource("2_mik7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7muwn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_3gwxl")

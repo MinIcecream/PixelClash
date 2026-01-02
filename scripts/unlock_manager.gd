@@ -4,7 +4,8 @@ var units: Dictionary[String, bool] = {
 	"swordsman": true,
 	"archer": true,
 	"knight": true,
-	"calvalry": true
+	"calvalry": true,
+	"alchemist": true
 }
 
 var battles: Dictionary[String, bool] = {

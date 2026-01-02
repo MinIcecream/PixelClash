@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://p20ekwuj4qec"]
+[gd_scene load_steps=16 format=3 uid="uid://p20ekwuj4qec"]
 
 [ext_resource type="Script" uid="uid://sehtuo110vy2" path="res://scripts/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="2_ro3t7"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://ilumwvqhyr17" path="res://assets/New Piskel.png" id="8_w7enk"]
 [ext_resource type="Resource" uid="uid://cbugrljphdybe" path="res://data/units/calvalry.tres" id="9_7paak"]
 [ext_resource type="Texture2D" uid="uid://clw2nm2hhuwaw" path="res://assets/New Piskel (1).png" id="10_5sqrc"]
+[ext_resource type="Resource" uid="uid://xgset8qwa4al" path="res://data/units/alchemist.tres" id="11_ilk7v"]
+[ext_resource type="Texture2D" uid="uid://bc3n5uqfhjr1f" path="res://assets/New Piskel (2).png" id="12_flkkw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(1, 1, 1, 1)
@@ -101,11 +103,17 @@ size_flags_vertical = 4
 text = "Restart"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-layout_mode = 2
-offset_left = 466.0
-offset_top = 578.0
-offset_right = 686.0
-offset_bottom = 647.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -219.5
+offset_top = -69.0
+offset_right = 219.5
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = -1
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer"]
@@ -179,6 +187,24 @@ stretch_mode = 0
 script = ExtResource("3_5en4g")
 unit = ExtResource("9_7paak")
 icon = ExtResource("10_5sqrc")
+
+[node name="PanelContainer6" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer6"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer6/MarginContainer2" groups=["ui_tool", "unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("3_5en4g")
+unit = ExtResource("11_ilk7v")
+icon = ExtResource("12_flkkw")
 
 [node name="PanelContainer3" type="PanelContainer" parent="Control/HBoxContainer"]
 layout_mode = 2

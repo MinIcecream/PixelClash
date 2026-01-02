@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://xgset8qwa4al"]
+
+[ext_resource type="PackedScene" uid="uid://prykkcv3osf7" path="res://scenes/death.tscn" id="1_x04xs"]
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="2_vsw4n"]
+
+[resource]
+script = ExtResource("2_vsw4n")
+faction = 0
+name = "alchemist"
+speed = 25.0
+attack_range = 150.0
+attack_cooldown = 5.0
+damage = 5
+health = 18
+price = 3
+death_particles = ExtResource("1_x04xs")
+size = Vector2i(1, 1)
+target_groups = Array[String](["enemy"])
+metadata/_custom_type_script = "uid://bohci6skr4x5g"

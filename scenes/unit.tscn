@@ -8,14 +8,13 @@
 [ext_resource type="Script" uid="uid://tk3v3vbtjifb" path="res://scripts/attack.gd" id="5_ruro2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tb304"]
-radius = 8.62262
+radius = 10.7783
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ruro2"]
 radius = 5.0
 height = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ruro2"]
-radius = 12.0416
 
 [node name="CharacterBody2D3" type="CharacterBody2D"]
 z_index = 5

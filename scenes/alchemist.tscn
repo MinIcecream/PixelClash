@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7bacpewoeypo"]
+
+[ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_244nv"]
+[ext_resource type="Resource" uid="uid://xgset8qwa4al" path="res://data/units/alchemist.tres" id="2_aa2yc"]
+[ext_resource type="Texture2D" uid="uid://bc3n5uqfhjr1f" path="res://assets/New Piskel (2).png" id="3_aa2yc"]
+[ext_resource type="Script" uid="uid://dd01t30wy0uqx" path="res://scripts/ranged_attack.gd" id="4_wgu80"]
+[ext_resource type="PackedScene" uid="uid://dk2dhcfbs4ge0" path="res://scenes/alchemist_bottle.tscn" id="5_wgu80"]
+
+[node name="CharacterBody2D3" instance=ExtResource("1_244nv")]
+data = ExtResource("2_aa2yc")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_aa2yc")
+
+[node name="Collider" parent="." index="1"]
+position = Vector2(1.42109e-14, 2)
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2(0, 1)
+
+[node name="Attack" parent="." index="5"]
+script = ExtResource("4_wgu80")
+projectile = ExtResource("5_wgu80")
+
+[node name="CollisionShape2D" parent="AvoidanceArea" index="0"]
+position = Vector2(0, 0)

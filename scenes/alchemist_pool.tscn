@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccnvorbjvy66"]
+
+[ext_resource type="Script" uid="uid://chv7n5qgu7bld" path="res://scripts/alchemist_pool.gd" id="1_cl3nu"]
+[ext_resource type="Texture2D" uid="uid://bx61v2jjmd4vr" path="res://assets/New Piskel (4).png" id="1_ec7di"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cl3nu"]
+radius = 16.0
+
+[node name="AlchemistPool" type="Node2D"]
+script = ExtResource("1_cl3nu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cl3nu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ec7di")
+
+[node name="Timer" type="Timer" parent="."]
