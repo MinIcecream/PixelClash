@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 		var instance = pool.instantiate()
 		instance.global_position = self.global_position
 		instance.set_faction(faction)
+		instance.set_damage(damage)
 		get_tree().current_scene.add_child(instance)
 		queue_free()
 

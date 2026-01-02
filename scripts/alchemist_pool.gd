@@ -5,12 +5,15 @@ extends Node2D
 @export var tick_time = 1
 @export var lifetime = 3
 var faction
-
+var damage
 var enemies: Array[Area2D] = []
 
 func set_faction(source_faction: UnitData.Faction):
 	faction = source_faction
 
+func set_damage(damage: int):
+	self.damage = damage
+	
 func _ready() -> void:
 	timer.wait_time = tick_time
 	timer.timeout.connect(_on_tick)
@@ -32,4 +35,4 @@ func _on_area_exited(unit: Area2D):
 func _on_tick():
 	for enemy in enemies:
 		if is_instance_valid(enemy) and enemy.faction != faction:
-			enemy.take_damage(20)
+			enemy.take_damage(damage)

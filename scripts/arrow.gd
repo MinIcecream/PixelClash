@@ -23,5 +23,5 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(unit: Area2D):
 	if unit.faction == faction:
 		return
-	unit.take_damage(20)
+	unit.take_damage(damage)
 	queue_free()
