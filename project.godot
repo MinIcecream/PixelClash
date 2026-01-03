@@ -22,6 +22,7 @@ SceneChanger="*res://scripts/scene_changer.gd"
 BattleSession="*res://scripts/battle_session.gd"
 UnlockManager="*res://scripts/unlock_manager.gd"
 BattleRegistry="*res://scripts/battle_registry.gd"
+UnpausedTime="*res://scripts/unpaused_time.gd"
 
 [debug]
 

@@ -9,6 +9,7 @@ enum Faction { PLAYER, ENEMY, NEUTRAL }
 @export var data: Resource
 
 var staggered = false
+var slow: float = 0
 var origin = Vector2.ZERO
 var health
 

@@ -22,7 +22,7 @@ func move_to_target(target: Node, delta: float) -> void:
 	var sep = separation_force()
 	var to_target = target.global_position - global_position
 	var dir = (to_target + sep * 1000).normalized()
-	var desired = dir * get_parent().data.speed
+	var desired = dir * get_parent().data.speed * (1 - get_parent().slow)
 	get_parent().velocity = get_parent().velocity.lerp(desired, 8.0 * delta)
 	get_parent().move_and_slide()
 	

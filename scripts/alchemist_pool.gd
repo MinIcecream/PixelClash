@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var area2D = $"Area2D"
 @onready var timer = $"Timer"
-@export var tick_time = 1
-@export var lifetime = 3
+@export var tick_time: float = 1
+@export var lifetime: float = 3
+@export var source_id: String = "alchemist"
+
 var faction
 var damage
 var enemies: Array[Area2D] = []
@@ -20,7 +22,7 @@ func _ready() -> void:
 	timer.start()
 
 	area2D.area_entered.connect(Callable(self, "_on_area_entered"))
-	area2D.area_exited.connect(Callable(self, "_on_area_entered"))
+	area2D.area_exited.connect(Callable(self, "_on_area_exited"))
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
@@ -29,10 +31,11 @@ func _on_area_entered(unit: Area2D):
 		enemies.append(unit)
 
 func _on_area_exited(unit: Area2D):
+	print(unit)
 	if unit in enemies:
 		enemies.erase(unit)
 
 func _on_tick():
 	for enemy in enemies:
 		if is_instance_valid(enemy) and enemy.faction != faction:
-			enemy.take_damage(damage)
+			enemy.try_take_tick_damage(source_id, tick_time, damage)
