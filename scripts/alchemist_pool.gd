@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var area2D = $"Area2D"
 @onready var timer = $"Timer"
-@export var tick_time: float = 1
+@export var tick_time: float = 0.65
 @export var lifetime: float = 3
 @export var source_id: String = "alchemist"
 
@@ -31,7 +31,6 @@ func _on_area_entered(unit: Area2D):
 		enemies.append(unit)
 
 func _on_area_exited(unit: Area2D):
-	print(unit)
 	if unit in enemies:
 		enemies.erase(unit)
 
@@ -39,3 +38,4 @@ func _on_tick():
 	for enemy in enemies:
 		if is_instance_valid(enemy) and enemy.faction != faction:
 			enemy.try_take_tick_damage(source_id, tick_time, damage)
+			enemy.slow(str(self), 0.6, 1)

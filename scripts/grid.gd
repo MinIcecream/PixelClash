@@ -33,7 +33,6 @@ func world_pos_to_spawn_unit(origin: Vector2i, unit: UnitData) -> Vector2:
 func place_unit(cell: Vector2i, unit: UnitData) -> void:
 	var cell_center = world_pos_to_spawn_unit(Vector2i(cell.x, cell.y), unit)
 	if cell in used_cells:
-		print("Cell already occupied!")
 		return
 
 	var instance = UnitRegistry.units[unit.name].scene.instantiate()
