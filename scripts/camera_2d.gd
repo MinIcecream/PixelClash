@@ -1,11 +1,12 @@
 extends Camera2D
 
 @export var zoom_speed := 0.1
-@export var min_zoom := 0.1
+@export var min_zoom := 0
 @export var max_zoom := 5
 var limits_rect: Rect2
 @export var grid: Grid
 @export var padding: float = 250.0
+@export var drag_factor = 0.35
 
 var dragging := false
 var drag_start := Vector2.ZERO
@@ -36,14 +37,14 @@ func _input(event):
 				dragging = false
 
 		# Zoom in/out with scroll wheel
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			zoom_camera(-zoom_speed)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom_camera(zoom_speed)
 
 	# Mouse motion while dragging
 	elif event is InputEventMouseMotion and dragging:
-		position -= event.relative * zoom.x  # scale movement by zoom
+		position -= event.relative * zoom.x * drag_factor  # scale movement by zoom
 
 func zoom_camera(delta):
 	var new_zoom = zoom + Vector2(delta, delta)

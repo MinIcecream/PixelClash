@@ -1,15 +1,15 @@
 [gd_scene load_steps=16 format=3 uid="uid://p20ekwuj4qec"]
 
 [ext_resource type="Script" uid="uid://sehtuo110vy2" path="res://scripts/ui.gd" id="1_dj8aq"]
-[ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="2_ro3t7"]
 [ext_resource type="Script" uid="uid://cytx7204ob374" path="res://scripts/unit_selector.gd" id="3_5en4g"]
 [ext_resource type="Resource" uid="uid://c33u2vildylcy" path="res://data/units/archer.tres" id="3_75u2n"]
 [ext_resource type="Texture2D" uid="uid://flqelwjnfdee" path="res://assets/Arrow.png.png" id="4_3wlde"]
 [ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/units/swordsman.tres" id="5_xpksx"]
+[ext_resource type="Texture2D" uid="uid://cokpvgu6j4674" path="res://assets/swordsman.png" id="6_ilk7v"]
 [ext_resource type="Resource" uid="uid://dunh42025fc0j" path="res://data/units/knight.tres" id="7_ukj8e"]
 [ext_resource type="Script" uid="uid://c3ohiurpgkpi4" path="res://scripts/eraser_ui.gd" id="7_xpksx"]
 [ext_resource type="Texture2D" uid="uid://fpcjumr332uo" path="res://assets/eraser.png" id="8_24e4x"]
-[ext_resource type="Texture2D" uid="uid://ilumwvqhyr17" path="res://assets/New Piskel.png" id="8_w7enk"]
+[ext_resource type="Texture2D" uid="uid://cc28cbru45wrc" path="res://assets/knight.png" id="8_ilk7v"]
 [ext_resource type="Resource" uid="uid://cbugrljphdybe" path="res://data/units/calvalry.tres" id="9_7paak"]
 [ext_resource type="Texture2D" uid="uid://clw2nm2hhuwaw" path="res://assets/New Piskel (1).png" id="10_5sqrc"]
 [ext_resource type="Resource" uid="uid://xgset8qwa4al" path="res://data/units/alchemist.tres" id="11_ilk7v"]
@@ -150,7 +150,7 @@ layout_mode = 2
 stretch_mode = 0
 script = ExtResource("3_5en4g")
 unit = ExtResource("5_xpksx")
-icon = ExtResource("2_ro3t7")
+icon = ExtResource("6_ilk7v")
 
 [node name="PanelContainer4" type="PanelContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
@@ -168,7 +168,7 @@ layout_mode = 2
 stretch_mode = 0
 script = ExtResource("3_5en4g")
 unit = ExtResource("7_ukj8e")
-icon = ExtResource("8_w7enk")
+icon = ExtResource("8_ilk7v")
 
 [node name="PanelContainer5" type="PanelContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
@@ -183,7 +183,7 @@ theme_override_constants/margin_bottom = 15
 [node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer5/MarginContainer2" groups=["ui_tool", "unit_button"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-stretch_mode = 0
+stretch_mode = 5
 script = ExtResource("3_5en4g")
 unit = ExtResource("9_7paak")
 icon = ExtResource("10_5sqrc")

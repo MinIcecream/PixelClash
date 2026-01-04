@@ -1,18 +1,21 @@
-[gd_scene load_steps=13 format=4 uid="uid://dvqqm57eu4e21"]
+[gd_scene load_steps=17 format=4 uid="uid://bjl712rhd0egq"]
 
-[ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_f4pi3"]
-[ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_yahae"]
-[ext_resource type="Script" uid="uid://bsdhm3br46air" path="res://scripts/input_manager.gd" id="3_v7i3o"]
-[ext_resource type="Script" uid="uid://bwxvt4pstmbed" path="res://scripts/grid.gd" id="4_66ngm"]
-[ext_resource type="Script" uid="uid://dxwjyobqc2p5r" path="res://scripts/grid_drawer.gd" id="5_03edq"]
-[ext_resource type="Script" uid="uid://sutuiixeqm62" path="res://scripts/game_manager.gd" id="7_6ni85"]
-[ext_resource type="Script" uid="uid://x02hsm3k7jox" path="res://scripts/grid_selection_overlay.gd" id="7_v7i3o"]
-[ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_vceff"]
-[ext_resource type="Script" uid="uid://7oymaqo1x24t" path="res://scripts/gold_manager.gd" id="9_yahae"]
-[ext_resource type="Script" uid="uid://lsmyecm87bs2" path="res://scripts/battle_context.gd" id="14_vceff"]
+[ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_ce3yh"]
+[ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_p3mvb"]
+[ext_resource type="Script" uid="uid://bsdhm3br46air" path="res://scripts/input_manager.gd" id="3_83bsl"]
+[ext_resource type="Script" uid="uid://bwxvt4pstmbed" path="res://scripts/grid.gd" id="4_hnpar"]
+[ext_resource type="Script" uid="uid://dxwjyobqc2p5r" path="res://scripts/grid_drawer.gd" id="5_bs13u"]
+[ext_resource type="Script" uid="uid://sutuiixeqm62" path="res://scripts/game_manager.gd" id="7_aecg5"]
+[ext_resource type="PackedScene" uid="uid://p20ekwuj4qec" path="res://scenes/UI.tscn" id="8_h5d2w"]
+[ext_resource type="Script" uid="uid://7oymaqo1x24t" path="res://scripts/gold_manager.gd" id="9_e5nse"]
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="10_bcrh5"]
+[ext_resource type="Script" uid="uid://cfs4xm81lihbd" path="res://scripts/battle_editor.gd" id="10_bodh6"]
+[ext_resource type="Script" uid="uid://bj3u735fxoeid" path="res://scripts/battle_data.gd" id="11_ce3yh"]
+[ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/units/enemy_test.tres" id="12_mto4v"]
+[ext_resource type="Script" uid="uid://bmxsod57q4phu" path="res://scripts/battle_visualizer.gd" id="13_fenjd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dvvg"]
-texture = ExtResource("1_f4pi3")
+texture = ExtResource("1_ce3yh")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -251,6 +254,10 @@ texture = ExtResource("1_f4pi3")
 [sub_resource type="TileSet" id="TileSet_rnjyy"]
 sources/2 = SubResource("TileSetAtlasSource_4dvvg")
 
+[sub_resource type="Resource" id="Resource_p3mvb"]
+script = ExtResource("11_ce3yh")
+metadata/_custom_type_script = "uid://bj3u735fxoeid"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Layer0" type="TileMapLayer" parent="."]
@@ -264,37 +271,38 @@ process_mode = 3
 position = Vector2(200, 59.5)
 scale = Vector2(0.537983, -3.89519)
 zoom = Vector2(2, 2)
-script = ExtResource("2_yahae")
+script = ExtResource("2_p3mvb")
 min_zoom = 1
 grid = NodePath("../Grid")
 
 [node name="InputManager" type="Node2D" parent="."]
 process_mode = 3
-script = ExtResource("3_v7i3o")
+script = ExtResource("3_83bsl")
 
-[node name="Grid" type="Node2D" parent="." node_paths=PackedStringArray("battle_context")]
-script = ExtResource("4_66ngm")
-battle_context = NodePath("../BattleContext")
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("4_hnpar")
 
 [node name="Drawer" type="Node2D" parent="Grid" node_paths=PackedStringArray("grid")]
 process_mode = 3
-script = ExtResource("5_03edq")
+script = ExtResource("5_bs13u")
 grid = NodePath("..")
 
 [node name="GridEditor" type="Node2D" parent="Grid"]
 
-[node name="GridSelectionOverlay" type="Node2D" parent="Grid" node_paths=PackedStringArray("grid")]
-script = ExtResource("7_v7i3o")
-grid = NodePath("..")
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("7_aecg5")
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("battle_context")]
-script = ExtResource("7_6ni85")
-battle_context = NodePath("../BattleContext")
-
-[node name="UI" parent="." instance=ExtResource("8_vceff")]
+[node name="UI" parent="." instance=ExtResource("8_h5d2w")]
 
 [node name="GoldManager" type="Node2D" parent="."]
-script = ExtResource("9_yahae")
+script = ExtResource("9_e5nse")
 
-[node name="BattleContext" type="Node" parent="."]
-script = ExtResource("14_vceff")
+[node name="BattleEditor" type="Node" parent="." node_paths=PackedStringArray("grid")]
+script = ExtResource("10_bodh6")
+battle_data = SubResource("Resource_p3mvb")
+grid = NodePath("../Grid")
+selected_unit = ExtResource("12_mto4v")
+
+[node name="BattleVisualizer" type="Node" parent="BattleEditor" node_paths=PackedStringArray("grid")]
+script = ExtResource("13_fenjd")
+grid = NodePath("../../Grid")

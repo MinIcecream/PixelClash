@@ -10,10 +10,10 @@ var player_grid: Rect2i
 
 var used_cells: Dictionary[Vector2i, CharacterBody2D]
 
-func _ready() -> void:
-	player_grid = battle_context.get_player_grid()
-	width = battle_context.get_grid_width()
-	height = battle_context.get_grid_height()
+func set_grid(player_grid: Rect2i, entire_grid: Vector2i) -> void:
+	self.player_grid = player_grid
+	width = entire_grid.x
+	height = entire_grid.y
 
 func world_to_cell(pos: Vector2) -> Vector2i:
 	var x = int(floor(pos.x / cell_size))

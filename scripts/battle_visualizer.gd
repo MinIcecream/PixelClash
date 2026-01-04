@@ -17,7 +17,6 @@ func refresh_ghosts():
 		# Draw new ghosts
 	if not battle_data:
 		return
-
 	for position in battle_data.enemy_units:
 		var unit = UnitRegistry.units[battle_data.enemy_units[position].name]
 		var ghost = unit.scene.instantiate()

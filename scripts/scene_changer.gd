@@ -14,7 +14,7 @@ func load_battle(scene: PackedScene, battle: BattleData):
 	current_battle_scene = scene
 	var instance = scene.instantiate()
 	var battle_context = instance.get_node("BattleContext")
-	battle_context.battle_data = battle
+	battle_context.set_battle_data(current_battle)
 	get_tree().root.add_child(instance)
 	get_tree().current_scene.queue_free()
 	get_tree().current_scene = instance
@@ -22,7 +22,7 @@ func load_battle(scene: PackedScene, battle: BattleData):
 func reload_battle():
 	var instance = current_battle_scene.instantiate()
 	var battle_context = instance.get_node("BattleContext")
-	battle_context.battle_data = current_battle
+	battle_context.set_battle_data(current_battle)
 	get_tree().root.add_child(instance)
 	get_tree().current_scene.queue_free()
 	get_tree().current_scene = instance

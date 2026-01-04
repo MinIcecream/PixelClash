@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	var target = get_target.get_target(target_groups)
 	cleanse_expired_cc()
 
-	if target == null or stagger_sources.size() > 0:
+	if target == null or stagger_sources.size() > 0 or attack.can_attack == false:
 		return
 
 	if self.global_position.distance_to(target.global_position) < data.attack_range:

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_dp28g"]
 [ext_resource type="Resource" uid="uid://dunh42025fc0j" path="res://data/units/knight.tres" id="2_3i0j8"]
-[ext_resource type="Texture2D" uid="uid://ilumwvqhyr17" path="res://assets/New Piskel.png" id="3_0dyjn"]
+[ext_resource type="Texture2D" uid="uid://cc28cbru45wrc" path="res://assets/knight.png" id="3_0dyjn"]
 [ext_resource type="Script" uid="uid://b5843emgbf5rm" path="res://scripts/cleave_attack.gd" id="5_5fsgc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0dyjn"]

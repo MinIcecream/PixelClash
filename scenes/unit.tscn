@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hmokxe5hweay" path="res://assets/tile_0000.png" id="1_dp28g"]
 [ext_resource type="Script" uid="uid://bhera803jrei2" path="res://scripts/get_target.gd" id="3_0dyjn"]
 [ext_resource type="Script" uid="uid://qq553up108qx" path="res://scripts/movement.gd" id="4_5fsgc"]
-[ext_resource type="Script" uid="uid://r7ukej54bt4" path="res://scripts/hurtbox.gd" id="5_e8hdl"]
+[ext_resource type="Script" uid="uid://r7ukej54bt4" path="res://scripts/Hurtbox.gd" id="5_e8hdl"]
 [ext_resource type="Script" uid="uid://tk3v3vbtjifb" path="res://scripts/attack.gd" id="5_ruro2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tb304"]

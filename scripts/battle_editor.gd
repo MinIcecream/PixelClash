@@ -1,7 +1,12 @@
 @tool
 extends Node
 
-@export var battle_data: BattleData
+@export var battle_data: BattleData = null:
+	set(value):
+		battle_data = value
+		grid.set_grid(value.player_grid, Vector2i(value.grid_width, value.grid_height))
+		dirty = true
+
 @export var grid: Grid
 @export var selected_unit: UnitData
 @export var enabled = false

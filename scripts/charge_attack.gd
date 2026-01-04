@@ -38,9 +38,9 @@ func _do_attack(target: Node2D) -> void:
 	enable_hitbox()
 	chargeDirection = dir.normalized()
 	await get_tree().create_timer(0.75).timeout
-	disable_hitbox()
 	chargeDirection = null
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.25).timeout
+	disable_hitbox()
 	finish_attack()
 
 func enable_hitbox():
@@ -50,7 +50,7 @@ func enable_hitbox():
 func disable_hitbox():
 	area2D.monitoring = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if chargeDirection != null:
 		var desired = chargeDirection * get_parent().data.speed * 5
 		get_parent().velocity = desired
