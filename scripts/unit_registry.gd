@@ -26,5 +26,9 @@ var units := {
 	"enemy": {
 		"scene": preload("res://scenes/enemy.tscn"),
 		"data": preload("res://data/units/enemy_test.tres")
+	},
+	"troll": {
+		"scene": preload("res://scenes/troll.tscn"),
+		"data": preload("res://data/units/troll.tres")
 	}
 }

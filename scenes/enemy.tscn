@@ -29,7 +29,5 @@ collision_mask = 2
 monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D" index="0"]
-polygon = PackedVector2Array(8, 2, 9, -11, 22, -7, 25, 3, 20, 14, 8, 17)
-
-[node name="AvoidanceArea" parent="." index="6"]
-collision_layer = 0
+position = Vector2(-6, 3)
+polygon = PackedVector2Array(8, 2, 15, -7, 20, -3, 22, 2, 20, 8, 15, 12)
