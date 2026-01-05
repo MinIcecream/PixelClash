@@ -3,11 +3,12 @@ extends Node2D
 
 func separation_force() -> Vector2:
 	var force := Vector2.ZERO
-	for body in avoidance_area.get_overlapping_bodies():
-		if body == self or not body.is_in_group(get_parent().group_name):
+	for body in avoidance_area.get_overlapping_areas():
+		var parent = body.get_parent()
+		if parent == self or not parent.is_in_group(get_parent().group_name):
 			continue
 
-		var offset = global_position - body.global_position
+		var offset = global_position - parent.global_position
 		var d = offset.length()
 
 		if d == 0:

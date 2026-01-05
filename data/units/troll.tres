@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://bhdu5u65nakgl"]
+
+[ext_resource type="PackedScene" uid="uid://prykkcv3osf7" path="res://scenes/death.tscn" id="1_t6waa"]
+[ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="2_fqpx3"]
+
+[resource]
+script = ExtResource("2_fqpx3")
+faction = 1
+name = "troll"
+speed = 25.0
+attack_range = 30.0
+attack_cooldown = 1.4
+damage = 16
+health = 100
+price = 10
+death_particles = ExtResource("1_t6waa")
+size = Vector2i(2, 2)
+target_groups = Array[String](["player"])
+metadata/_custom_type_script = "uid://bohci6skr4x5g"

@@ -9,7 +9,6 @@
 radius = 12.9346
 
 [node name="CharacterBody2D2" instance=ExtResource("1_7p1mj")]
-collision_mask = 0
 data = ExtResource("2_md0e3")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -19,6 +18,7 @@ texture = ExtResource("3_4ra3w")
 position = Vector2(1, 7)
 rotation = 3.18064
 shape = SubResource("CircleShape2D_5uy6h")
+disabled = true
 
 [node name="Attack" parent="." index="5"]
 script = ExtResource("4_5uy6h")
@@ -31,6 +31,3 @@ monitoring = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D" index="0"]
 position = Vector2(-6, 3)
 polygon = PackedVector2Array(8, 2, 15, -7, 20, -3, 22, 2, 20, 8, 15, 12)
-
-[node name="AvoidanceArea" parent="." index="6"]
-collision_layer = 0

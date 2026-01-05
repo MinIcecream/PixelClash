@@ -30,6 +30,7 @@ position = Vector2(1, 8)
 rotation = 1.57638
 scale = Vector2(0.463897, -0.447547)
 shape = SubResource("CircleShape2D_tb304")
+disabled = true
 
 [node name="GetTarget" type="Node2D" parent="."]
 script = ExtResource("3_0dyjn")
