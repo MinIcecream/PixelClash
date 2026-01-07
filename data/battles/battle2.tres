@@ -9,10 +9,8 @@
 script = ExtResource("3_ly321")
 id = "battle_02"
 display_name = "Battle 2"
-grid_width = 30
 grid_height = 20
 player_grid = Rect2i(0, 5, 30, 15)
-player_starting_gold = 100
 enemy_units = Dictionary[Vector2i, ExtResource("1_iq0kp")]({
 Vector2i(0, 0): ExtResource("2_iq0kp"),
 Vector2i(5, 3): ExtResource("2_iq0kp"),

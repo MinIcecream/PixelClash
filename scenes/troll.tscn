@@ -1,34 +1,11 @@
-<<<<<<< HEAD
-[gd_scene load_steps=4 format=3 uid="uid://dus882tg4ro8x"]
-=======
-[gd_scene load_steps=5 format=3 uid="uid://dus882tg4ro8x"]
->>>>>>> 5a91612 (Fixes arrow hitbox)
+[gd_scene load_steps=4 format=3 uid="uid://dh4jw41amvieb"]
 
-[ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_ex8gv"]
-[ext_resource type="Script" uid="uid://b5843emgbf5rm" path="res://scripts/cleave_attack.gd" id="2_he7uh"]
-[ext_resource type="Resource" uid="uid://bhdu5u65nakgl" path="res://data/units/troll.tres" id="2_liot7"]
-<<<<<<< HEAD
-=======
-[ext_resource type="Texture2D" uid="uid://b7fjo607brv0h" path="res://assets/troll.png" id="3_rigua"]
->>>>>>> 5a91612 (Fixes arrow hitbox)
+[ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_liot7"]
+[ext_resource type="Resource" uid="uid://bhdu5u65nakgl" path="res://data/units/troll.tres" id="2_rigua"]
+[ext_resource type="Texture2D" uid="uid://b7fjo607brv0h" path="res://assets/troll.png" id="3_l735v"]
 
-[node name="CharacterBody2D3" instance=ExtResource("1_ex8gv")]
-data = ExtResource("2_liot7")
+[node name="CharacterBody2D3" instance=ExtResource("1_liot7")]
+data = ExtResource("2_rigua")
 
-<<<<<<< HEAD
-=======
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_rigua")
-
->>>>>>> 5a91612 (Fixes arrow hitbox)
-[node name="Attack" parent="." index="5"]
-script = ExtResource("2_he7uh")
-
-[node name="Area2D" type="Area2D" parent="Attack" index="0"]
-collision_layer = 0
-collision_mask = 2
-monitoring = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D" index="0"]
-position = Vector2(11, -6)
-polygon = PackedVector2Array(-11, 11, -11, 28, 14, 33, 22, 12, 17, -13, -11, -10)
+texture = ExtResource("3_l735v")

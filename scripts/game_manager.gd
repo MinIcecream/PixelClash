@@ -49,6 +49,7 @@ func _process(_delta: float) -> void:
 	var enemy_units = get_tree().get_nodes_in_group("enemy").size()
 	
 	if player_units > 0 and enemy_units == 0:
+		UnlockManager.unlock_after_battle(battle_context.battle_data.id)
 		_end_game(1)
 	if player_units == 0 and enemy_units > 0:
 		_end_game(-1)
