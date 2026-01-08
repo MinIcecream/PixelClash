@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3jqknk8rk8r2"]
+[gd_scene load_steps=6 format=3 uid="uid://b3jqknk8rk8r2"]
 
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_j1nbv"]
 [ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/units/swordsman.tres" id="2_6mje0"]
 [ext_resource type="Script" uid="uid://7f80agfwm8xo" path="res://scripts/melee_attack.gd" id="3_6mje0"]
 [ext_resource type="Texture2D" uid="uid://cokpvgu6j4674" path="res://assets/swordsman.png" id="3_r7u1p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7u1p"]
+radius = 8.062258
 
 [node name="CharacterBody2D2" instance=ExtResource("1_j1nbv")]
 data = ExtResource("2_6mje0")
@@ -28,8 +31,6 @@ monitoring = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D" index="0"]
 polygon = PackedVector2Array(8, 2, 9, -14, 20, -9, 25, 2, 20, 12, 8, 18)
 
-[node name="AvoidanceArea" parent="." index="6"]
-collision_layer = 0
-
 [node name="CollisionShape2D" parent="AvoidanceArea" index="0"]
 position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_r7u1p")

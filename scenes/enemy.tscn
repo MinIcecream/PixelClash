@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx2ncblkpq1sr"]
+[gd_scene load_steps=7 format=3 uid="uid://dx2ncblkpq1sr"]
 
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_7p1mj"]
 [ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/units/enemy_test.tres" id="2_md0e3"]
@@ -8,6 +8,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
 radius = 12.9346
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
+radius = 11.045361
+
 [node name="CharacterBody2D2" instance=ExtResource("1_7p1mj")]
 data = ExtResource("2_md0e3")
 
@@ -15,10 +18,8 @@ data = ExtResource("2_md0e3")
 texture = ExtResource("3_4ra3w")
 
 [node name="Collider" parent="." index="1"]
-position = Vector2(1, 7)
 rotation = 3.18064
 shape = SubResource("CircleShape2D_5uy6h")
-disabled = true
 
 [node name="Attack" parent="." index="5"]
 script = ExtResource("4_5uy6h")
@@ -31,3 +32,6 @@ monitoring = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Attack/Area2D" index="0"]
 position = Vector2(-6, 3)
 polygon = PackedVector2Array(8, 2, 15, -7, 20, -3, 22, 2, 20, 8, 15, 12)
+
+[node name="CollisionShape2D" parent="AvoidanceArea" index="0"]
+shape = SubResource("CircleShape2D_c4w8v")
