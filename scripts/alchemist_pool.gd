@@ -13,8 +13,8 @@ var enemies: Array[Area2D] = []
 func set_faction(source_faction: UnitData.Faction):
 	faction = source_faction
 
-func set_damage(damage: int):
-	self.damage = damage
+func set_damage(_damage: int):
+	self.damage = _damage
 	
 func _ready() -> void:
 	timer.wait_time = tick_time
@@ -38,4 +38,5 @@ func _on_tick():
 	for enemy in enemies:
 		if is_instance_valid(enemy) and enemy.faction != faction:
 			enemy.try_take_tick_damage(source_id, tick_time, damage)
-			enemy.slow(str(self), 0.6, 1)
+			var slow = Slow.new(0.6, 1)
+			enemy.slow(slow)

@@ -8,10 +8,11 @@ enum Faction { PLAYER, ENEMY, NEUTRAL }
 @onready var sprite = $"Sprite2D"
 @export var data: Resource
 
-var stagger_sources: Dictionary[String, float]
-var slow_sources: Dictionary[String, Array] # {source: [slow_amount, end_time]}
+var additive_ccs: Array = []
+var movement_modifier_ccs: Array = []
 var origin = Vector2.ZERO
 var health
+var in_range: bool = false
 
 var group_name:
 	get:
@@ -24,8 +25,8 @@ var group_name:
 var slow:
 	get:
 		var max_slow = 0
-		for source in slow_sources:
-			max_slow = max(max_slow, slow_sources[source][0])
+		for effect in movement_modifier_ccs:
+			max_slow = max(max_slow, effect.get_velocity_modifier())
 		return max_slow
 
 func _ready():
@@ -38,18 +39,36 @@ func _ready():
 			add_to_group("enemy")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var target_groups = data.target_groups
 	var target = get_target.get_target(target_groups)
-	cleanse_expired_cc()
 
-	if target == null or stagger_sources.size() > 0 or attack.can_attack == false:
+	if target == null or attack.can_attack == false:
 		return
 
 	if self.global_position.distance_to(target.global_position) < data.attack_range:
 		attack.attack(target)
+		in_range = true
 	else:
-		movement.move_to_target(target, delta)
+		in_range = false
+
+func _physics_process(_delta: float) -> void:
+	var total_velocity = Vector2.ZERO
+
+	for modifier in movement_modifier_ccs:
+		if modifier.is_completed():
+			movement_modifier_ccs.erase(modifier)
+
+	var desired_velocity = movement.get_desired_velocity(get_target.get_target(data.target_groups))
+	total_velocity += desired_velocity
+
+	for cc in additive_ccs:
+		total_velocity += cc.get_velocity()
+		if cc.is_completed():
+			additive_ccs.erase(cc)
+
+	velocity = total_velocity
+	move_and_slide()
 
 func take_damage(amount: int) -> void:
 	health -= amount
@@ -65,18 +84,11 @@ func flash_red():
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color.WHITE
 
-func cleanse_expired_cc() -> void:
-	for source in stagger_sources.keys():
-		if UnpausedTime.now > stagger_sources[source]:
-			stagger_sources.erase(source)
-	for source in slow_sources.keys():
-		if UnpausedTime.now > slow_sources[source][1]:
-			slow_sources.erase(source)
+func apply_slow(_slow: Slow) -> void:
+	movement_modifier_ccs.append(_slow)
 
-func apply_slow(source_id: String, slow_amount: float, duration: float) -> void:
-	var end_time = UnpausedTime.now + duration
-	slow_sources[source_id] = [slow_amount, end_time]
+func apply_stagger(stagger: Stagger) -> void:
+	movement_modifier_ccs.append(stagger)
 
-func apply_stagger(source_id: String, duration: float) -> void:
-	var end_time = UnpausedTime.now + duration
-	stagger_sources[source_id] = end_time
+func apply_knockback(knockback: Knockback) -> void:
+	additive_ccs.append(knockback)

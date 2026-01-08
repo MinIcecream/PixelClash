@@ -17,13 +17,11 @@ func separation_force() -> Vector2:
 		force += offset.normalized() * (1.0 / d)
 	return force
 
-func move_to_target(target: Node, delta: float) -> void:
-	if target == null:
-		return
+func get_desired_velocity(target: Node) -> Vector2:
+	if target == null or get_parent().in_range:
+		return Vector2.ZERO
 	var sep = separation_force()
 	var to_target = target.global_position - global_position
 	var dir = (to_target + sep * 1000).normalized()
 	var desired = dir * get_parent().data.speed * (1 - get_parent().slow)
-	get_parent().velocity = get_parent().velocity.lerp(desired, 8.0 * delta)
-	get_parent().move_and_slide()
-	
+	return desired	

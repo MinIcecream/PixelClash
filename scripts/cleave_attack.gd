@@ -5,4 +5,5 @@ func _apply_hit_effects(unit: Area2D) -> void:
 
 	var chaos = randf_range(-0.3, 0.3)
 	dir = dir.rotated(chaos)
-	unit.knockback(str(self), dir * 1300)
+	var knockback = Knockback.new(dir * 1300)
+	unit.knockback(knockback)
