@@ -13,6 +13,7 @@ damage = 16
 health = 100
 price = 10
 death_particles = ExtResource("1_t6waa")
+mass = 3.0
 size = Vector2i(2, 2)
 target_groups = Array[String](["player"])
 metadata/_custom_type_script = "uid://bohci6skr4x5g"

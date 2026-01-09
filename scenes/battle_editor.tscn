@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b1f11prqsidvl"]
+[gd_scene load_steps=15 format=4 uid="uid://dcadpnwpwnhtw"]
 
 [ext_resource type="Texture2D" uid="uid://fkrg530yygvf" path="res://assets/tilemap_packed.png" id="1_ce3yh"]
 [ext_resource type="Script" uid="uid://dosic1f6ysuec" path="res://scripts/camera_2d.gd" id="2_p3mvb"]
@@ -297,7 +297,6 @@ script = ExtResource("10_bodh6")
 battle_data = ExtResource("10_mrcwe")
 grid = NodePath("../Grid")
 selected_unit = ExtResource("11_bcrh5")
-enabled = true
 
 [node name="BattleVisualizer" type="Node" parent="BattleEditor" node_paths=PackedStringArray("grid")]
 script = ExtResource("13_fenjd")

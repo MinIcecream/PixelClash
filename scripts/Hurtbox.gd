@@ -17,8 +17,6 @@ func try_take_tick_damage(source_id: String, tick_time: float, damage: int) -> v
 
 func knockback(kb: Knockback) -> void:
 	get_parent().apply_knockback(kb)
-	var stagger = Stagger.new(0.5)
-	get_parent().apply_stagger(stagger)
 
 func slow(slow_effect: Slow) -> void:
 	get_parent().apply_slow(slow_effect)

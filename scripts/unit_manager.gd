@@ -43,7 +43,8 @@ func _process(_delta: float) -> void:
 	var target_groups = data.target_groups
 	var target = get_target.get_target(target_groups)
 
-	if target == null or attack.can_attack == false:
+	# check if attacking so you don't apply a movement velocity if the attack takes you out of range
+	if target == null or attack.attacking == true:
 		return
 
 	if self.global_position.distance_to(target.global_position) < data.attack_range:
@@ -63,7 +64,7 @@ func _physics_process(_delta: float) -> void:
 	total_velocity += desired_velocity
 
 	for cc in additive_ccs:
-		total_velocity += cc.get_velocity()
+		total_velocity += cc.get_velocity() / data.mass
 		if cc.is_completed():
 			additive_ccs.erase(cc)
 

@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="BattleData" load_steps=5 format=3 uid="uid://dqofnt3cy6alk"]
+[gd_resource type="Resource" script_class="BattleData" load_steps=4 format=3 uid="uid://dqofnt3cy6alk"]
 
 [ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="1_iq0kp"]
-[ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/units/enemy_test.tres" id="2_iq0kp"]
+[ext_resource type="Resource" uid="uid://bhdu5u65nakgl" path="res://data/units/troll.tres" id="2_iq0kp"]
 [ext_resource type="Script" uid="uid://bj3u735fxoeid" path="res://scripts/battle_data.gd" id="3_ly321"]
-[ext_resource type="Resource" uid="uid://bhdu5u65nakgl" path="res://data/units/troll.tres" id="3_ptcsv"]
 
 [resource]
 script = ExtResource("3_ly321")
@@ -12,60 +11,6 @@ display_name = "Battle 2"
 grid_height = 20
 player_grid = Rect2i(0, 5, 30, 15)
 enemy_units = Dictionary[Vector2i, ExtResource("1_iq0kp")]({
-Vector2i(0, 0): ExtResource("2_iq0kp"),
-Vector2i(5, 3): ExtResource("2_iq0kp"),
-Vector2i(6, 3): ExtResource("2_iq0kp"),
-Vector2i(6, 4): ExtResource("2_iq0kp"),
-Vector2i(6, 5): ExtResource("2_iq0kp"),
-Vector2i(7, 1): ExtResource("2_iq0kp"),
-Vector2i(7, 2): ExtResource("2_iq0kp"),
-Vector2i(7, 3): ExtResource("2_iq0kp"),
-Vector2i(7, 5): ExtResource("2_iq0kp"),
-Vector2i(8, 3): ExtResource("2_iq0kp"),
-Vector2i(8, 5): ExtResource("2_iq0kp"),
-Vector2i(9, 1): ExtResource("2_iq0kp"),
-Vector2i(9, 2): ExtResource("2_iq0kp"),
-Vector2i(9, 3): ExtResource("2_iq0kp"),
-Vector2i(9, 4): ExtResource("2_iq0kp"),
-Vector2i(9, 5): ExtResource("2_iq0kp"),
-Vector2i(10, 2): ExtResource("2_iq0kp"),
-Vector2i(10, 3): ExtResource("2_iq0kp"),
-Vector2i(10, 4): ExtResource("2_iq0kp"),
-Vector2i(11, 2): ExtResource("2_iq0kp"),
-Vector2i(12, 2): ExtResource("2_iq0kp"),
-Vector2i(12, 6): ExtResource("3_ptcsv"),
-Vector2i(13, 2): ExtResource("2_iq0kp"),
-Vector2i(13, 3): ExtResource("2_iq0kp"),
-Vector2i(13, 9): ExtResource("3_ptcsv"),
-Vector2i(14, 0): ExtResource("3_ptcsv"),
-Vector2i(14, 1): ExtResource("3_ptcsv"),
-Vector2i(15, 1): ExtResource("3_ptcsv"),
-Vector2i(15, 4): ExtResource("3_ptcsv"),
-Vector2i(15, 6): ExtResource("3_ptcsv"),
-Vector2i(16, 1): ExtResource("3_ptcsv"),
-Vector2i(16, 3): ExtResource("2_iq0kp"),
-Vector2i(16, 5): ExtResource("2_iq0kp"),
-Vector2i(18, 1): ExtResource("2_iq0kp"),
-Vector2i(19, 3): ExtResource("2_iq0kp"),
-Vector2i(19, 4): ExtResource("2_iq0kp"),
-Vector2i(20, 3): ExtResource("2_iq0kp"),
-Vector2i(20, 4): ExtResource("2_iq0kp"),
-Vector2i(20, 5): ExtResource("2_iq0kp"),
-Vector2i(21, 1): ExtResource("2_iq0kp"),
-Vector2i(21, 2): ExtResource("2_iq0kp"),
-Vector2i(21, 3): ExtResource("2_iq0kp"),
-Vector2i(21, 5): ExtResource("2_iq0kp"),
-Vector2i(21, 6): ExtResource("2_iq0kp"),
-Vector2i(22, 3): ExtResource("2_iq0kp"),
-Vector2i(22, 4): ExtResource("2_iq0kp"),
-Vector2i(22, 6): ExtResource("2_iq0kp"),
-Vector2i(23, 2): ExtResource("2_iq0kp"),
-Vector2i(23, 4): ExtResource("2_iq0kp"),
-Vector2i(23, 5): ExtResource("2_iq0kp"),
-Vector2i(23, 6): ExtResource("2_iq0kp"),
-Vector2i(24, 4): ExtResource("2_iq0kp"),
-Vector2i(25, 1): ExtResource("2_iq0kp"),
-Vector2i(25, 5): ExtResource("2_iq0kp"),
-Vector2i(26, 1): ExtResource("2_iq0kp")
+Vector2i(14, 1): ExtResource("2_iq0kp")
 })
 metadata/_custom_type_script = "uid://bj3u735fxoeid"

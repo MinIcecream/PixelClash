@@ -5,15 +5,14 @@
 
 [resource]
 script = ExtResource("2_lxsdm")
-faction = 0
 name = "knight"
 speed = 25.0
-attack_range = 30.0
 attack_cooldown = 1.4
 damage = 16
 health = 100
 price = 10
 death_particles = ExtResource("1_nc7ly")
+mass = 3.0
 size = Vector2i(2, 2)
 target_groups = Array[String](["enemy"])
 metadata/_custom_type_script = "uid://bohci6skr4x5g"

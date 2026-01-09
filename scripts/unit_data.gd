@@ -12,5 +12,6 @@ enum Faction { PLAYER, ENEMY }
 @export var health: int = 20
 @export var price: int = 2
 @export var death_particles: PackedScene
+@export var mass: float = 1
 @export var size: Vector2i = Vector2i(1, 1)
 @export var target_groups: Array[String]
