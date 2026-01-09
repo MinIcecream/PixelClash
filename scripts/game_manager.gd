@@ -15,7 +15,7 @@ func _ready() -> void:
 	get_tree().paused = true
 	UI.back_to_main.connect(Callable(self, "_on_back_to_main"))
 	UI.start_game.connect(Callable(self, "_on_start_game"))
-	UI.restart_game.connect(Callable(self, "_on_restart_game"))
+	UI.restart_game.connect(Callable(self, "restart_game"))
 	
 	var starting_gold = battle_context.get_starting_gold()
 	for pos in BattleSession.battle_state.player_units:
@@ -39,7 +39,7 @@ func _on_start_game() -> void:
 	_save_battle_state()
 	get_tree().paused = false
 
-func _on_restart_game() -> void:
+func restart_game() -> void:
 	SceneChanger.reload_battle()
 
 func _process(_delta: float) -> void:

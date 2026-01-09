@@ -15,6 +15,9 @@ signal back_to_main
 @onready var game_over_container = $"Control/GameOver"
 @onready var preview_gold = $"Control/PreviewGold"
 @onready var back_button = $"Control/BackButton"
+@onready var toolbar = $"Control/HBoxContainer"
+@onready var clear_all_button = $"Control/ClearButton"
+@onready var leave_battle_button = $"Control/LeaveBattleButton"
 
 func _ready() -> void:
 	input_manager.preview_gold.connect(Callable(self, "_on_preview_gold"))
@@ -47,8 +50,11 @@ func _on_gold_changed(gold: int):
 
 func _on_start_game_pressed():
 	play_container.visible = false
+	toolbar.visible = false
+	clear_all_button.visible = false
 	emit_signal("start_game")
 	back_button.visible = false
+	leave_battle_button.visible = true
 	
 func _on_restart_game_pressed() -> void:
 	emit_signal("restart_game")
