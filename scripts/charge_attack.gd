@@ -26,8 +26,8 @@ func _apply_hit_effects(unit: Area2D) -> void:
 
 	# Mix sideways + a bit of forward
 	var knock_dir = (side * 0.8 + forward * 0.2).normalized()
-
-	unit.knockback(str(self), knock_dir * 2000)
+	var knockback = Knockback.new(knock_dir * 2000)
+	unit.knockback(knockback)
 
 
 func _do_attack(target: Node2D) -> void:
