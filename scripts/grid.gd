@@ -10,8 +10,8 @@ var player_grid: Rect2i
 
 var used_cells: Dictionary[Vector2i, CharacterBody2D]
 
-func set_grid(player_grid: Rect2i, entire_grid: Vector2i) -> void:
-	self.player_grid = player_grid
+func set_grid(_player_grid: Rect2i, entire_grid: Vector2i) -> void:
+	player_grid = _player_grid
 	width = entire_grid.x
 	height = entire_grid.y
 
@@ -28,7 +28,17 @@ func world_pos_to_spawn_unit(origin: Vector2i, unit: UnitData) -> Vector2:
 	var center_y = origin.y + unit.size.y / 2.0
 	
 	return Vector2(center_x, center_y) * cell_size
-	
+
+func get_player_units() -> Array[CharacterBody2D]:
+	var units: Array[CharacterBody2D] = []
+	for unit in used_cells.values():
+		if unit not in units:
+			units.append(unit)
+	return units
+
+func clear_player_units() -> void:
+	for unit in used_cells.values():
+		delete_unit(unit)
 
 func place_unit(cell: Vector2i, unit: UnitData) -> void:
 	var cell_center = world_pos_to_spawn_unit(Vector2i(cell.x, cell.y), unit)

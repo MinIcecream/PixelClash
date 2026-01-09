@@ -32,6 +32,7 @@ func set_mode(mode_type: InteractionModeType, payload: Variant = null):
 			current_interaction = EraseUnitMode.new()
 			current_interaction.grid = grid
 			current_interaction.gold_manager = gold_manager
+			current_interaction.game_manager = game_manager
 			current_interaction.preview_gold.connect(Callable(self, "_on_preview_gold"))
 			current_interaction.clear_preview_gold.connect(Callable(self, "_on_clear_preview_gold"))
 

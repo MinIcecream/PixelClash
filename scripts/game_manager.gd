@@ -72,3 +72,8 @@ func _save_battle_state():
 	for pos in grid.used_cells:
 		var origin = grid.used_cells[pos].origin
 		state.player_units[origin] = grid.used_cells[pos].data
+
+func delete_unit(unit: CharacterBody2D) -> void:
+	var gold_refunded = unit.data.price
+	grid.delete_unit(unit)
+	gold_manager.add_gold(gold_refunded)
