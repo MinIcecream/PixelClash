@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://7oymaqo1x24t" path="res://scripts/gold_manager.gd" id="9_e5nse"]
 [ext_resource type="Script" uid="uid://cfs4xm81lihbd" path="res://scripts/battle_editor.gd" id="10_bodh6"]
 [ext_resource type="Resource" uid="uid://dqofnt3cy6alk" path="res://data/battles/battle2.tres" id="10_mrcwe"]
-[ext_resource type="Resource" uid="uid://dlq6xn4bw0frk" path="res://data/units/druid.tres" id="11_mrcwe"]
+[ext_resource type="Resource" uid="uid://0odhflm75hrm" path="res://data/units/enemy_test.tres" id="11_mrcwe"]
 [ext_resource type="Script" uid="uid://bmxsod57q4phu" path="res://scripts/battle_visualizer.gd" id="13_fenjd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dvvg"]

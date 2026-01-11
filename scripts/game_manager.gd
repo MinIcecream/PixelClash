@@ -30,6 +30,7 @@ func _spawn_enemy_units():
 
 	for pos in enemy_units:
 		var unit_data = enemy_units[pos]
+		print(unit_data)
 		var unit_scene = UnitRegistry.units[unit_data.name].scene
 		var instance = unit_scene.instantiate()
 		instance.global_position = grid.world_pos_to_spawn_unit(pos, unit_data)
