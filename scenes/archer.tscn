@@ -3,10 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_jggnj"]
 [ext_resource type="Resource" uid="uid://c33u2vildylcy" path="res://data/units/archer.tres" id="2_b0l3x"]
 [ext_resource type="Script" uid="uid://dd01t30wy0uqx" path="res://scripts/ranged_attack.gd" id="3_orquw"]
-[ext_resource type="PackedScene" uid="uid://mlmw1c422a2b" path="res://scenes/archer_arrow.tscn" id="4_cctdm"]
+[ext_resource type="PackedScene" uid="uid://b0kulblmnfy53" path="res://scenes/rock.tscn" id="4_cctdm"]
 
 [node name="CharacterBody2D" instance=ExtResource("1_jggnj")]
-collision_mask = 0
 data = ExtResource("2_b0l3x")
 
 [node name="Collider" parent="." index="1"]

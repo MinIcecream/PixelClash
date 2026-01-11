@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://p20ekwuj4qec"]
+[gd_scene load_steps=21 format=3 uid="uid://p20ekwuj4qec"]
 
 [ext_resource type="Script" uid="uid://sehtuo110vy2" path="res://scripts/ui.gd" id="1_dj8aq"]
 [ext_resource type="Script" uid="uid://cytx7204ob374" path="res://scripts/unit_selector.gd" id="3_5en4g"]
@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://clw2nm2hhuwaw" path="res://assets/New Piskel (1).png" id="10_5sqrc"]
 [ext_resource type="Resource" uid="uid://xgset8qwa4al" path="res://data/units/alchemist.tres" id="11_ilk7v"]
 [ext_resource type="Texture2D" uid="uid://bc3n5uqfhjr1f" path="res://assets/New Piskel (2).png" id="12_flkkw"]
+[ext_resource type="Script" uid="uid://cixcpajrg4j5f" path="res://scripts/select_ui.gd" id="15_4dthu"]
 [ext_resource type="Script" uid="uid://d3rcpnci2j2b5" path="res://scripts/clear_button.gd" id="15_flkkw"]
 [ext_resource type="Texture2D" uid="uid://bw8awbpu41qbh" path="res://assets/image (10).png" id="15_mhjpf"]
+[ext_resource type="Texture2D" uid="uid://cskbfk4b1wwm0" path="res://assets/images.jpg" id="16_hu0pd"]
 [ext_resource type="Script" uid="uid://2qgfhqfb3agr" path="res://scripts/exit_battle_button.gd" id="16_s2m3y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
@@ -226,6 +228,24 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("7_xpksx")
 icon = ExtResource("8_24e4x")
+
+[node name="Select" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/Select"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/Select/MarginContainer2" groups=["ui_tool"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("15_4dthu")
+icon = ExtResource("16_hu0pd")
 
 [node name="PreviewGold" type="Label" parent="Control"]
 visible = false

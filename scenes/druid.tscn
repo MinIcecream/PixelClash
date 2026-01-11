@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwgsal7sffpcd"]
+
+[ext_resource type="PackedScene" uid="uid://bfrc287phd4w7" path="res://scenes/unit.tscn" id="1_3abc4"]
+[ext_resource type="Resource" uid="uid://dlq6xn4bw0frk" path="res://data/units/druid.tres" id="2_gabhy"]
+[ext_resource type="Texture2D" uid="uid://dqmyx4qlqyfon" path="res://assets/Orc Druid-export.png" id="2_h7bar"]
+[ext_resource type="Script" uid="uid://dd01t30wy0uqx" path="res://scripts/ranged_attack.gd" id="3_o3vap"]
+[ext_resource type="PackedScene" uid="uid://b0kulblmnfy53" path="res://scenes/rock.tscn" id="5_gabhy"]
+
+[node name="CharacterBody2D3" instance=ExtResource("1_3abc4")]
+data = ExtResource("2_gabhy")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(2.5, 4.5)
+scale = Vector2(1.3125, 1.5625)
+texture = ExtResource("2_h7bar")
+
+[node name="Attack" parent="." index="5"]
+script = ExtResource("3_o3vap")
+projectile = ExtResource("5_gabhy")

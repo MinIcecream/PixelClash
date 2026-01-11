@@ -30,5 +30,9 @@ var units := {
 	"troll": {
 		"scene": preload("res://scenes/troll.tscn"),
 		"data": preload("res://data/units/troll.tres")
+	},
+	"druid": {
+		"scene": preload("res://scenes/druid.tscn"),
+		"data": preload("res://data/units/druid.tres")
 	}
 }

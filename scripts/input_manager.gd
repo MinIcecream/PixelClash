@@ -35,7 +35,8 @@ func set_mode(mode_type: InteractionModeType, payload: Variant = null):
 			current_interaction.game_manager = game_manager
 			current_interaction.preview_gold.connect(Callable(self, "_on_preview_gold"))
 			current_interaction.clear_preview_gold.connect(Callable(self, "_on_clear_preview_gold"))
-
+		InteractionModeType.SELECT:
+			current_interaction = SelectMode.new()
 func _unhandled_input(event):
 	if game_manager.game_started or not current_interaction:
 		return

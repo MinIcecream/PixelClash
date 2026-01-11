@@ -18,6 +18,8 @@ func refresh_ghosts():
 	if not battle_data:
 		return
 	for position in battle_data.enemy_units:
+		print(battle_data.enemy_units[position].name)
+		print(UnitRegistry.units)
 		var unit = UnitRegistry.units[battle_data.enemy_units[position].name]
 		var ghost = unit.scene.instantiate()
 		ghost.modulate = Color(1,1,1,0.5)

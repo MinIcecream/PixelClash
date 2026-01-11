@@ -27,6 +27,7 @@ func _ready() -> void:
 
 func _spawn_enemy_units():
 	var enemy_units = battle_context.get_enemy_units()
+
 	for pos in enemy_units:
 		var unit_data = enemy_units[pos]
 		var unit_scene = UnitRegistry.units[unit_data.name].scene
