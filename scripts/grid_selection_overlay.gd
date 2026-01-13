@@ -20,26 +20,26 @@ func _draw():
 func draw_selection_box(first_coord, second_coord):
 	var cell1 = grid.world_to_cell(first_coord)
 	var cell2 = grid.world_to_cell(second_coord)
-	var player_grid = grid.player_grid
+	var curr_grid = grid.playable_grid
 
 	var top_cell_pos = min(cell1.y, cell2.y)
 	var bottom_cell_pos = max(cell1.y, cell2.y)
 	var left_cell_pos = min(cell1.x, cell2.x)
 	var right_cell_pos = max(cell1.x, cell2.x)
 	
-	if top_cell_pos < player_grid.position.y and bottom_cell_pos < player_grid.position.y:
+	if top_cell_pos < curr_grid.position.y and bottom_cell_pos < curr_grid.position.y:
 		return
-	if top_cell_pos > player_grid.end.y and bottom_cell_pos > player_grid.end.y:
+	if top_cell_pos > curr_grid.end.y and bottom_cell_pos > curr_grid.end.y:
 		return
-	if left_cell_pos < player_grid.position.x and right_cell_pos < player_grid.position.x:
+	if left_cell_pos < curr_grid.position.x and right_cell_pos < curr_grid.position.x:
 		return
-	if left_cell_pos > player_grid.end.x and right_cell_pos > player_grid.end.x:
+	if left_cell_pos > curr_grid.end.x and right_cell_pos > curr_grid.end.x:
 		return
 	
-	top_cell_pos = clamp(top_cell_pos, player_grid.position.y, player_grid.end.y - 1)
-	bottom_cell_pos = clamp(bottom_cell_pos, player_grid.position.y, player_grid.end.y - 1)
-	left_cell_pos = clamp(left_cell_pos, player_grid.position.x, player_grid.end.x - 1)
-	right_cell_pos = clamp(right_cell_pos, player_grid.position.x, player_grid.end.x - 1)
+	top_cell_pos = clamp(top_cell_pos, curr_grid.position.y, curr_grid.end.y - 1)
+	bottom_cell_pos = clamp(bottom_cell_pos, curr_grid.position.y, curr_grid.end.y - 1)
+	left_cell_pos = clamp(left_cell_pos, curr_grid.position.x, curr_grid.end.x - 1)
+	right_cell_pos = clamp(right_cell_pos, curr_grid.position.x, curr_grid.end.x - 1)
 	
 	var top_left_cell_bounds = grid.get_cell_bounds(Vector2i(left_cell_pos, top_cell_pos))
 	var bottom_right_cell_bounds = grid.get_cell_bounds(Vector2i(right_cell_pos, bottom_cell_pos))

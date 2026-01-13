@@ -5,15 +5,15 @@ extends Node
 @export var cell_size: int = 16
 var width: int
 var height: int
-var player_grid: Rect2i
+var playable_grid: Rect2i
+var outer_grid: Rect2i
 @export var battle_context: BattleContext
 
 var used_cells: Dictionary[Vector2i, CharacterBody2D]
 
-func set_grid(_player_grid: Rect2i, entire_grid: Vector2i) -> void:
-	player_grid = _player_grid
-	width = entire_grid.x
-	height = entire_grid.y
+func set_grid(_playable_grid: Rect2i, _outer_grid: Rect2i) -> void:
+	playable_grid = _playable_grid
+	outer_grid = _outer_grid
 
 func world_to_cell(pos: Vector2) -> Vector2i:
 	var x = int(floor(pos.x / cell_size))
@@ -53,10 +53,10 @@ func place_unit(cell: Vector2i, unit: UnitData) -> void:
 		used_cells[unit_cell] = instance
 
 func out_of_bounds_cell(cell: Vector2i) -> bool:
-	var left_bound = player_grid.position.x
-	var right_bound = player_grid.end.x
-	var top_bound = player_grid.position.y
-	var bottom_bound = player_grid.end.y
+	var left_bound = playable_grid.position.x
+	var right_bound = playable_grid.end.x
+	var top_bound = playable_grid.position.y
+	var bottom_bound = playable_grid.end.y
 	if cell.x < left_bound:
 		return true
 	if cell.x >= right_bound:
@@ -68,10 +68,10 @@ func out_of_bounds_cell(cell: Vector2i) -> bool:
 	return false
 
 func out_of_bounds_selection(left, right, top, bottom) -> bool:
-	var left_bound = player_grid.position.x
-	var right_bound = player_grid.end.x
-	var top_bound = player_grid.position.y
-	var bottom_bound = player_grid.end.y
+	var left_bound = playable_grid.position.x
+	var right_bound = playable_grid.end.x
+	var top_bound = playable_grid.position.y
+	var bottom_bound = playable_grid.end.y
 	if left < left_bound and right < left_bound:
 		return true
 	if right >= right_bound and left >= right_bound:
@@ -99,10 +99,10 @@ func get_cells_in_rect(start: Vector2, stop: Vector2) -> Array[Vector2i]:
 	if out_of_bounds_selection(left, right, top, bottom):
 		return output
 	
-	var left_bound = player_grid.position.x
-	var right_bound = player_grid.end.x
-	var top_bound = player_grid.position.y
-	var bottom_bound = player_grid.end.y
+	var left_bound = playable_grid.position.x
+	var right_bound = playable_grid.end.x
+	var top_bound = playable_grid.position.y
+	var bottom_bound = playable_grid.end.y
 	var clamped_left = clamp(left, left_bound, right_bound)
 	var clamped_right = clamp(right, left_bound, right_bound)
 	var clamped_top = clamp(top, top_bound, bottom_bound)

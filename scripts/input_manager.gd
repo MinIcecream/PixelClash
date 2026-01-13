@@ -1,5 +1,6 @@
+@tool
 extends Node2D
-
+class_name InputManager
 signal select_cells(cells: Array[Vector2i])
 signal preview_gold(gold)
 signal clear_preview_gold()
@@ -37,6 +38,7 @@ func set_mode(mode_type: InteractionModeType, payload: Variant = null):
 			current_interaction.clear_preview_gold.connect(Callable(self, "_on_clear_preview_gold"))
 		InteractionModeType.SELECT:
 			current_interaction = SelectMode.new()
+
 func _unhandled_input(event):
 	if game_manager.game_started or not current_interaction:
 		return

@@ -8,15 +8,15 @@ extends Node2D
 func _draw():
 	if Engine.is_editor_hint():
 		_draw_all_grid_lines()
-		_draw_player_grid_outline()
+		# _draw_player_grid_outline()
 	else:
 		_draw_player_grid_lines()
 
 func _draw_all_grid_lines():
-	_draw_grid_lines(Rect2i(Vector2(0, 0), Vector2(grid.width, grid.height)))
+	_draw_grid_lines(grid.outer_grid)
 
 func _draw_player_grid_lines():
-	_draw_grid_lines(grid.player_grid)
+	_draw_grid_lines(grid.playable_grid)
 
 func _draw_grid_lines(rect: Rect2i):
 	# Vertical lines
@@ -31,9 +31,9 @@ func _draw_grid_lines(rect: Rect2i):
 		var left = rect.position.x * grid.cell_size
 		var right = left + rect.size.x * grid.cell_size
 		draw_line(Vector2(left, y), Vector2(right, y), color, 1)
-
+	
 func _draw_player_grid_outline():
-	var cell_rect = grid.player_grid
+	var cell_rect = grid.playable_grid
 	var world_rect = Rect2(
 		cell_rect.position * grid.cell_size,
 		cell_rect.size * grid.cell_size)

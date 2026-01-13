@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj44nn20cfa8d"]
+
+[ext_resource type="Script" uid="uid://cj5g5d2hpiecv" path="res://scripts/battle_editor_select.gd" id="1_dntq4"]
+[ext_resource type="PackedScene" uid="uid://cyol8jsfhowl2" path="res://scenes/battle_editor_select_button.tscn" id="2_ggsls"]
+[ext_resource type="Script" uid="uid://dcnae8b23u8m4" path="res://scripts/battle_editor_select_back_button.gd" id="3_ggsls"]
+[ext_resource type="PackedScene" uid="uid://bew4mlvhoci3b" path="res://scenes/battle_creator.tscn" id="3_pv6k4"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dntq4")
+button_scene = ExtResource("2_ggsls")
+battle_editor = ExtResource("3_pv6k4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -15.5
+offset_right = 31.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back
+"
+script = ExtResource("3_ggsls")

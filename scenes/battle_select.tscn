@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl4ej6shrfonc"]
+[gd_scene load_steps=7 format=3 uid="uid://cl4ej6shrfonc"]
 
 [ext_resource type="Script" uid="uid://dtexd8qebo4rh" path="res://scripts/battle_select.gd" id="1_6rp8x"]
 [ext_resource type="Script" uid="uid://cjthknssmm62p" path="res://scripts/battle_select_button.gd" id="2_uqqp6"]
 [ext_resource type="PackedScene" uid="uid://dvqqm57eu4e21" path="res://scenes/battle.tscn" id="3_mh6sm"]
 [ext_resource type="Resource" uid="uid://dm5buox7wyr2h" path="res://data/battles/battle1.tres" id="4_5n6fq"]
 [ext_resource type="Resource" uid="uid://dqofnt3cy6alk" path="res://data/battles/battle2.tres" id="5_g4f1s"]
+[ext_resource type="Script" uid="uid://bc35wjxggykq2" path="res://scripts/go_to_battle_editor_select_button.gd" id="6_hogbb"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -47,3 +48,9 @@ text = "Level 1
 script = ExtResource("2_uqqp6")
 scene = ExtResource("3_mh6sm")
 battle = ExtResource("5_g4f1s")
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Battle Editor"
+script = ExtResource("6_hogbb")

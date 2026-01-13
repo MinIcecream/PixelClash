@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyol8jsfhowl2"]
+
+[ext_resource type="Script" uid="uid://dbws261wi4a5y" path="res://scripts/battle_editor_select_button.gd" id="1_rf7u4"]
+
+[node name="Button" type="Button" groups=["scene_button"]]
+theme_override_font_sizes/font_size = 50
+text = "Level 1
+"
+script = ExtResource("1_rf7u4")

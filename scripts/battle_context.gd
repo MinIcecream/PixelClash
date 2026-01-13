@@ -4,24 +4,15 @@ extends Node
 
 var battle_data: BattleData
 @onready var grid = $"../Grid"
-
-func get_grid_width() -> int:
-	return battle_data.grid_width
-
-func get_grid_height() -> int:
-	return battle_data.grid_height
 	
 func get_starting_gold() -> int:
 	return battle_data.player_starting_gold
 
 func get_enemy_units() -> Dictionary:
 	return battle_data.enemy_units
-	
-func get_player_grid() -> Rect2i:
-	return battle_data.player_grid
 
 func _ready() -> void:
-	grid.set_grid(battle_data.player_grid, Vector2i(battle_data.grid_width, battle_data.grid_height))
+	grid.set_grid(battle_data.player_grid, battle_data.outer_grid)
 	
-func set_battle_data(battle_data: BattleData) -> void:
-	self.battle_data = battle_data
+func set_battle_data(_battle_data: BattleData) -> void:
+	battle_data = _battle_data
