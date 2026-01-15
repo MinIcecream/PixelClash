@@ -1,4 +1,4 @@
-extends Node
+extends BaseGoldManager
 
 signal gold_changed(new_value: int)
 

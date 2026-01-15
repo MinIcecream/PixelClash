@@ -1,35 +1,31 @@
 @tool
 extends Node
 
-@export var battle_data: BattleData = null:
-	set(value):
-		battle_data = value
-		grid.set_grid(value.player_grid, Vector2i(value.grid_width, value.grid_height))
-		dirty = true
+var battle_data: BattleData
 
 @export var grid: Grid
 @export var selected_unit: UnitData
 @export var enabled = false
-var dirty = false
+@onready var ui = $"../UI"
 
-func _process(_delta: float) -> void:
-	if not enabled:
-		return
-	if not Engine.is_editor_hint():
-		return
-	if battle_data == null or grid == null:
-		return
+func _ready() -> void:
+	grid.set_grid(battle_data.outer_grid, battle_data.outer_grid)
+	ui.save_battle.connect(Callable(self, "_save_game"))
 
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouse_pos = grid.get_local_mouse_position()
-		var cell = grid.world_to_cell(mouse_pos)
-		if cell.x < 0 or cell.y < 0:
-			return
-		if cell.x >= grid.width or cell.y >= grid.height:
-			return
+func get_enemy_units() -> Dictionary:
+	return battle_data.enemy_units
 
-		_place_enemy(cell)
+func set_battle_data(data: BattleData):
+	battle_data = data
 
-func _place_enemy(cell: Vector2i):
-	dirty = true
-	battle_data.add_unit(cell, selected_unit)
+func _save_game():
+	var enemy_units: Dictionary[Vector2i, UnitData] = {}
+	var units_set: Dictionary[CharacterBody2D, Vector2i] = {} # because in grid.used_cells, each unit appears multiple times(each cell they occupy)
+	for cell in grid.used_cells:
+		var unit = grid.used_cells[cell]
+		units_set[unit] = unit.origin
+	
+	for unit in units_set:
+		enemy_units[units_set[unit]] = unit.data
+	battle_data.enemy_units = enemy_units
+	ResourceSaver.save(battle_data, battle_data.resource_path)

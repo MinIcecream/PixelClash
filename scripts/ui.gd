@@ -1,8 +1,7 @@
-extends CanvasLayer
+extends BaseUI
 
 signal start_game
 signal restart_game
-signal back_to_main
 
 @onready var game_manager = $"../GameManager"
 @onready var gold_manager = $"../GoldManager"
@@ -14,20 +13,20 @@ signal back_to_main
 @onready var play_container = $"Control/Play"
 @onready var game_over_container = $"Control/GameOver"
 @onready var preview_gold = $"Control/PreviewGold"
-@onready var back_button = $"Control/BackButton"
 @onready var toolbar = $"Control/HBoxContainer"
 @onready var clear_all_button = $"Control/ClearButton"
 @onready var leave_battle_button = $"Control/LeaveBattleButton"
 
-func _ready() -> void:
+func _connect_signals() -> void:
 	input_manager.preview_gold.connect(Callable(self, "_on_preview_gold"))
 	input_manager.clear_preview_gold.connect(Callable(self, "_on_clear_preview_gold"))
 	game_manager.game_over.connect(Callable(self, "_on_game_over"))
 	gold_manager.gold_changed.connect(Callable(self, "_on_gold_changed"))
 	play_button.pressed.connect(Callable(self, "_on_start_game_pressed"))
 	restart_button.pressed.connect(Callable(self, "_on_restart_game_pressed"))
+
+func _setup_ui():
 	gold_label.text = str(gold_manager.gold) + " Gold"
-	back_button.pressed.connect(Callable(self, "_on_back_button_pressed"))
 	
 	var unlocked_units = UnlockManager.get_unlocked_units()
 	for button in get_tree().get_nodes_in_group("unit_button"):
@@ -59,15 +58,6 @@ func _on_start_game_pressed():
 func _on_restart_game_pressed() -> void:
 	emit_signal("restart_game")
 
-func _on_back_button_pressed() -> void:
-	emit_signal("back_to_main")
-
-func on_select_tool(selected_button: TextureButton) -> void:
-	for button in get_tree().get_nodes_in_group("ui_tool"):
-		if button != selected_button:
-			button.lighten()
-	selected_button.darken()
-	
 func _on_preview_gold(gold) -> void:
 	preview_gold.visible = true
 	preview_gold.text = str(gold) + " gold"

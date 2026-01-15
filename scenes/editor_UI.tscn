@@ -1,0 +1,231 @@
+[gd_scene load_steps=20 format=3 uid="uid://l685353mroxh"]
+
+[ext_resource type="Script" uid="uid://cndjfdwpfsrww" path="res://scripts/editor_ui.gd" id="1_75a5m"]
+[ext_resource type="Script" uid="uid://cytx7204ob374" path="res://scripts/unit_selector.gd" id="2_x7wtd"]
+[ext_resource type="Resource" uid="uid://c33u2vildylcy" path="res://data/units/archer.tres" id="3_02v1q"]
+[ext_resource type="Texture2D" uid="uid://flqelwjnfdee" path="res://assets/Arrow.png.png" id="4_qui3i"]
+[ext_resource type="Resource" uid="uid://dx3tvhdxotd3r" path="res://data/units/swordsman.tres" id="5_1byj8"]
+[ext_resource type="Texture2D" uid="uid://cokpvgu6j4674" path="res://assets/swordsman.png" id="6_5xaj2"]
+[ext_resource type="Resource" uid="uid://dunh42025fc0j" path="res://data/units/knight.tres" id="7_2mu7n"]
+[ext_resource type="Texture2D" uid="uid://cc28cbru45wrc" path="res://assets/knight.png" id="8_nuooy"]
+[ext_resource type="Resource" uid="uid://cbugrljphdybe" path="res://data/units/calvalry.tres" id="9_inafq"]
+[ext_resource type="Texture2D" uid="uid://clw2nm2hhuwaw" path="res://assets/New Piskel (1).png" id="10_g74qm"]
+[ext_resource type="Resource" uid="uid://xgset8qwa4al" path="res://data/units/alchemist.tres" id="11_5n2ax"]
+[ext_resource type="Texture2D" uid="uid://bc3n5uqfhjr1f" path="res://assets/New Piskel (2).png" id="12_lag2r"]
+[ext_resource type="Script" uid="uid://c3ohiurpgkpi4" path="res://scripts/eraser_ui.gd" id="13_tnmdb"]
+[ext_resource type="Texture2D" uid="uid://fpcjumr332uo" path="res://assets/eraser.png" id="14_0byjs"]
+[ext_resource type="Script" uid="uid://cixcpajrg4j5f" path="res://scripts/select_ui.gd" id="15_mmixr"]
+[ext_resource type="Texture2D" uid="uid://cskbfk4b1wwm0" path="res://assets/images.jpg" id="16_m5yg5"]
+[ext_resource type="Script" uid="uid://d3rcpnci2j2b5" path="res://scripts/clear_button.gd" id="19_ikqck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="GDScript" id="GDScript_f73i8"]
+script/source = "extends Button
+
+func _pressed():
+	print(\"saved battle!\")
+"
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_75a5m")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -219.5
+offset_top = -69.0
+offset_right = 219.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = -1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer/MarginContainer2" groups=["ui_tool", "unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("2_x7wtd")
+unit = ExtResource("3_02v1q")
+icon = ExtResource("4_qui3i")
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer2/MarginContainer2" groups=["ui_tool", "unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("2_x7wtd")
+unit = ExtResource("5_1byj8")
+icon = ExtResource("6_5xaj2")
+
+[node name="PanelContainer4" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer4/MarginContainer2" groups=["ui_tool", "unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("2_x7wtd")
+unit = ExtResource("7_2mu7n")
+icon = ExtResource("8_nuooy")
+
+[node name="PanelContainer5" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer5"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer5/MarginContainer2" groups=["ui_tool", "unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 5
+script = ExtResource("2_x7wtd")
+unit = ExtResource("9_inafq")
+icon = ExtResource("10_g74qm")
+
+[node name="PanelContainer6" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/PanelContainer6"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/PanelContainer6/MarginContainer2" groups=["ui_tool", "unit_button"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("2_x7wtd")
+unit = ExtResource("11_5n2ax")
+icon = ExtResource("12_lag2r")
+
+[node name="Eraser" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/Eraser"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/Eraser/MarginContainer2" groups=["ui_tool"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("13_tnmdb")
+icon = ExtResource("14_0byjs")
+
+[node name="Select" type="PanelContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5en4g")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/Select"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/Select/MarginContainer2" groups=["ui_tool"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("15_mmixr")
+icon = ExtResource("16_m5yg5")
+
+[node name="BackButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 30
+text = "Back
+"
+
+[node name="ClearButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Clear
+"
+script = ExtResource("19_ikqck")
+
+[node name="SaveButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -83.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Save
+"
+script = SubResource("GDScript_f73i8")

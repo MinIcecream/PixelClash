@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 
 func deal_damage() -> void:
 	var targets = area2D.get_overlapping_areas()
-	print(targets)
 	for unit in targets:
 		if unit.faction == faction:
 			continue

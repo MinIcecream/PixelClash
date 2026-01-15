@@ -19,6 +19,14 @@ func load_battle(scene: PackedScene, battle: BattleData):
 	get_tree().current_scene.queue_free()
 	get_tree().current_scene = instance
 
+func load_battle_editor(scene: PackedScene, battle: BattleData):
+	var instance = scene.instantiate()
+	var battle_editor = instance.get_node("BattleEditor")
+	battle_editor.set_battle_data(battle)
+	get_tree().root.add_child(instance)
+	get_tree().current_scene.queue_free()
+	get_tree().current_scene = instance
+
 func reload_battle():
 	var instance = current_battle_scene.instantiate()
 	var battle_context = instance.get_node("BattleContext")

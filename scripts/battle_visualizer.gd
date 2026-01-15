@@ -2,12 +2,17 @@
 extends Node
 
 var ghost_units: Array = []
+var prev_units
 @export var grid: Grid
 
+func _ready() -> void:
+	prev_units = get_parent().battle_data.enemy_units.duplicate()
+
 func _process(_delta: float) -> void:
-	if get_parent().dirty:
-		get_parent().dirty = false
+	if get_parent().battle_data.enemy_units != prev_units:
 		refresh_ghosts()
+		prev_units = get_parent().battle_data.enemy_units.duplicate()
+
 
 func refresh_ghosts():
 	for ghost in ghost_units:
@@ -18,8 +23,6 @@ func refresh_ghosts():
 	if not battle_data:
 		return
 	for position in battle_data.enemy_units:
-		print(battle_data.enemy_units[position].name)
-		print(UnitRegistry.units)
 		var unit = UnitRegistry.units[battle_data.enemy_units[position].name]
 		var ghost = unit.scene.instantiate()
 		ghost.modulate = Color(1,1,1,0.5)

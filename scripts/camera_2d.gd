@@ -12,19 +12,16 @@ var dragging := false
 var drag_start := Vector2.ZERO
 
 func _ready() -> void:
-	var width = grid.battle_context.get_grid_width()
-	var height = grid.battle_context.get_grid_height()
 	var world_rect = Rect2(
 		Vector2(0, 0),
-		Vector2(width * grid.cell_size, height * grid.cell_size)
+		Vector2(grid.outer_grid.size.x * grid.cell_size, grid.outer_grid.size.y * grid.cell_size)
 	)
-	var padding_rect = Rect2(
+	limits_rect = Rect2(
 		world_rect.position - Vector2(padding, padding),
 		world_rect.size + Vector2(padding * 2, padding * 2)
 	)
-	limits_rect = padding_rect
 	global_position.x = limits_rect.position.x + limits_rect.size.x / 2
-	global_position.y = limits_rect.position.y + limits_rect.size.y / 2
+	global_position.y = limits_rect.position.y + limits_rect.size.y / 2.5
 
 func _input(event):
 	# Start drag on right mouse button down
