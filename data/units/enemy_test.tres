@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://0odhflm75hrm"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=4 format=3 uid="uid://0odhflm75hrm"]
 
 [ext_resource type="Script" uid="uid://bohci6skr4x5g" path="res://scripts/unit_data.gd" id="1_kusvv"]
 [ext_resource type="PackedScene" uid="uid://prykkcv3osf7" path="res://scenes/death.tscn" id="1_urf65"]
+[ext_resource type="Texture2D" uid="uid://ehxcv0ya147g" path="res://assets/tile_0008.png" id="3_gpc3w"]
 
 [resource]
 script = ExtResource("1_kusvv")
@@ -12,8 +13,7 @@ attack_range = 20.0
 attack_cooldown = 0.8
 damage = 8
 health = 30
-price = 2
 death_particles = ExtResource("1_urf65")
-size = Vector2i(1, 1)
+sprite = ExtResource("3_gpc3w")
 target_groups = Array[String](["player"])
 metadata/_custom_type_script = "uid://bohci6skr4x5g"
