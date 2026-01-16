@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnsqqf2jnklij"]
+
+[ext_resource type="PackedScene" uid="uid://cim805w7j2nte" path="res://scenes/tool.tscn" id="1_5o2ce"]
+[ext_resource type="Script" uid="uid://cytx7204ob374" path="res://scripts/unit_selector.gd" id="1_eofws"]
+
+[node name="Tool" instance=ExtResource("1_5o2ce")]
+script = ExtResource("1_eofws")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://clbsk74kal1d"]
+
+[ext_resource type="PackedScene" uid="uid://cim805w7j2nte" path="res://scenes/tool.tscn" id="1_xym5y"]
+[ext_resource type="Script" uid="uid://dnw37ohmyve6m" path="res://scripts/basic_tool.gd" id="2_n55i4"]
+
+[node name="Tool" instance=ExtResource("1_xym5y")]
+script = ExtResource("2_n55i4")
+icon = null

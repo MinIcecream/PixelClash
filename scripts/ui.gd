@@ -29,9 +29,10 @@ func _setup_ui():
 	gold_label.text = str(gold_manager.gold) + " Gold"
 	
 	var unlocked_units = UnlockManager.get_unlocked_units()
-	for button in get_tree().get_nodes_in_group("unit_button"):
-		if button.unit.name not in unlocked_units:
-			button.panel.visible = false
+	for unit in unlocked_units:
+		var instance = unit_selector_panel.instantiate()
+		toolbar.add_child(instance)
+		instance.set_unit(UnitRegistry.units[unit].data)
 
 func _on_game_over(status: int) -> void:
 	game_over_container.visible = true

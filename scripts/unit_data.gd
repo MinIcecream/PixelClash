@@ -13,5 +13,6 @@ enum Faction { PLAYER, ENEMY }
 @export var price: int = 2
 @export var death_particles: PackedScene
 @export var mass: float = 1
+@export var sprite: Texture2D
 @export var size: Vector2i = Vector2i(1, 1)
 @export var target_groups: Array[String]
