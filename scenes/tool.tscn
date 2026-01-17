@@ -27,6 +27,5 @@ theme_override_constants/margin_bottom = 15
 [node name="TextureButton" type="TextureButton" parent="MarginContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-disabled = true
 ignore_texture_size = true
 stretch_mode = 5

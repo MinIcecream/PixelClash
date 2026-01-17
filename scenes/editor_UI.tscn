@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://l685353mroxh"]
+[gd_scene load_steps=10 format=3 uid="uid://l685353mroxh"]
 
 [ext_resource type="Script" uid="uid://cndjfdwpfsrww" path="res://scripts/editor_ui.gd" id="1_75a5m"]
 [ext_resource type="PackedScene" uid="uid://dnsqqf2jnklij" path="res://scenes/unit_selector.tscn" id="2_cr37o"]
+[ext_resource type="PackedScene" uid="uid://clbsk74kal1d" path="res://scenes/basic_tool.tscn" id="3_yyrkh"]
+[ext_resource type="Script" uid="uid://c3ohiurpgkpi4" path="res://scripts/eraser_ui.gd" id="4_w4h1c"]
+[ext_resource type="Texture2D" uid="uid://fpcjumr332uo" path="res://assets/eraser.png" id="5_sj61o"]
+[ext_resource type="Script" uid="uid://cixcpajrg4j5f" path="res://scripts/select_ui.gd" id="6_6v8g0"]
+[ext_resource type="Texture2D" uid="uid://cskbfk4b1wwm0" path="res://assets/images.jpg" id="7_t7jcw"]
 [ext_resource type="Script" uid="uid://d3rcpnci2j2b5" path="res://scripts/clear_button.gd" id="19_ikqck"]
 
 [sub_resource type="GDScript" id="GDScript_f73i8"]
@@ -38,6 +43,16 @@ offset_right = 219.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = -1
+
+[node name="Eraser" parent="Control/HBoxContainer" instance=ExtResource("3_yyrkh")]
+layout_mode = 2
+script = ExtResource("4_w4h1c")
+icon = ExtResource("5_sj61o")
+
+[node name="Select" parent="Control/HBoxContainer" instance=ExtResource("3_yyrkh")]
+layout_mode = 2
+script = ExtResource("6_6v8g0")
+icon = ExtResource("7_t7jcw")
 
 [node name="BackButton" type="Button" parent="Control"]
 custom_minimum_size = Vector2(50, 50)

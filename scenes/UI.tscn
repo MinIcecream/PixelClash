@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://p20ekwuj4qec"]
+[gd_scene load_steps=11 format=3 uid="uid://p20ekwuj4qec"]
 
 [ext_resource type="Script" uid="uid://sehtuo110vy2" path="res://scripts/ui.gd" id="1_dj8aq"]
 [ext_resource type="PackedScene" uid="uid://dnsqqf2jnklij" path="res://scenes/unit_selector.tscn" id="2_75u2n"]
+[ext_resource type="PackedScene" uid="uid://clbsk74kal1d" path="res://scenes/basic_tool.tscn" id="3_w7enk"]
+[ext_resource type="Script" uid="uid://c3ohiurpgkpi4" path="res://scripts/eraser_ui.gd" id="4_aputy"]
+[ext_resource type="Texture2D" uid="uid://fpcjumr332uo" path="res://assets/eraser.png" id="5_7paak"]
+[ext_resource type="Script" uid="uid://cixcpajrg4j5f" path="res://scripts/select_ui.gd" id="6_5sqrc"]
+[ext_resource type="Texture2D" uid="uid://cskbfk4b1wwm0" path="res://assets/images.jpg" id="7_ilk7v"]
 [ext_resource type="Script" uid="uid://d3rcpnci2j2b5" path="res://scripts/clear_button.gd" id="15_flkkw"]
 [ext_resource type="Texture2D" uid="uid://bw8awbpu41qbh" path="res://assets/image (10).png" id="15_mhjpf"]
 [ext_resource type="Script" uid="uid://2qgfhqfb3agr" path="res://scripts/exit_battle_button.gd" id="16_s2m3y"]
@@ -95,6 +100,16 @@ offset_right = 219.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = -1
+
+[node name="Eraser" parent="Control/HBoxContainer" instance=ExtResource("3_w7enk")]
+layout_mode = 2
+script = ExtResource("4_aputy")
+icon = ExtResource("5_7paak")
+
+[node name="Select" parent="Control/HBoxContainer" instance=ExtResource("3_w7enk")]
+layout_mode = 2
+script = ExtResource("6_5sqrc")
+icon = ExtResource("7_ilk7v")
 
 [node name="PreviewGold" type="Label" parent="Control"]
 visible = false
