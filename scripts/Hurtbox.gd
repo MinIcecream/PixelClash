@@ -18,5 +18,8 @@ func try_take_tick_damage(source_id: String, tick_time: float, damage: int) -> v
 func knockback(kb: Knockback) -> void:
 	get_parent().apply_knockback(kb)
 
+func pull(pull_effect: Pull) -> void:
+	get_parent().apply_pull(pull_effect)
+
 func slow(slow_effect: Slow) -> void:
 	get_parent().apply_slow(slow_effect)
