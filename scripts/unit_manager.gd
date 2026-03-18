@@ -93,3 +93,6 @@ func apply_stagger(stagger: Stagger) -> void:
 
 func apply_knockback(knockback: Knockback) -> void:
 	additive_ccs.append(knockback)
+
+func apply_pull(pull: Pull) -> void:
+	additive_ccs.append(pull)
